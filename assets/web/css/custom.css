@@ -1,0 +1,42 @@
+.navigation {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation li {
+    position: relative;
+    margin-right: 20px;
+}
+
+.navigation li a {
+    text-decoration: none;
+    color: black; /* Default text color */
+    padding: 5px 0;
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease; /* Transition for zoom effect */
+}
+
+.navigation li a:hover {
+    color: red; /* Hover text color */
+    transform: scale(1.1); /* Zoom effect */
+}
+
+.navigation li a::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: red; /* Color of the underline */
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.navigation li a:hover::after {
+    width: 100%; /* On hover, the underline expands */
+}

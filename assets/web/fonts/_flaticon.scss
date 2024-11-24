@@ -1,0 +1,85 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 14/01/2019 15:45
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-lock:before { content: "\f100"; }
+.flaticon-rain:before { content: "\f101"; }
+.flaticon-circuit:before { content: "\f102"; }
+.flaticon-circuit-1:before { content: "\f103"; }
+.flaticon-security-guard:before { content: "\f104"; }
+.flaticon-shield:before { content: "\f105"; }
+.flaticon-brick-wall:before { content: "\f106"; }
+.flaticon-siren:before { content: "\f107"; }
+.flaticon-scheme:before { content: "\f108"; }
+.flaticon-antivirus:before { content: "\f109"; }
+.flaticon-shield-1:before { content: "\f10a"; }
+.flaticon-left-quote:before { content: "\f10b"; }
+.flaticon-group:before { content: "\f10c"; }
+.flaticon-security-code:before { content: "\f10d"; }
+.flaticon-shield-2:before { content: "\f10e"; }
+.flaticon-net:before { content: "\f10f"; }
+.flaticon-password:before { content: "\f110"; }
+.flaticon-key:before { content: "\f111"; }
+.flaticon-cam:before { content: "\f112"; }
+.flaticon-shopping-protection:before { content: "\f113"; }
+.flaticon-shield-3:before { content: "\f114"; }
+.flaticon-menu:before { content: "\f115"; }
+.flaticon-telephone:before { content: "\f116"; }
+    
+    $font-Flaticon-lock: "\f100";
+    $font-Flaticon-rain: "\f101";
+    $font-Flaticon-circuit: "\f102";
+    $font-Flaticon-circuit-1: "\f103";
+    $font-Flaticon-security-guard: "\f104";
+    $font-Flaticon-shield: "\f105";
+    $font-Flaticon-brick-wall: "\f106";
+    $font-Flaticon-siren: "\f107";
+    $font-Flaticon-scheme: "\f108";
+    $font-Flaticon-antivirus: "\f109";
+    $font-Flaticon-shield-1: "\f10a";
+    $font-Flaticon-left-quote: "\f10b";
+    $font-Flaticon-group: "\f10c";
+    $font-Flaticon-security-code: "\f10d";
+    $font-Flaticon-shield-2: "\f10e";
+    $font-Flaticon-net: "\f10f";
+    $font-Flaticon-password: "\f110";
+    $font-Flaticon-key: "\f111";
+    $font-Flaticon-cam: "\f112";
+    $font-Flaticon-shopping-protection: "\f113";
+    $font-Flaticon-shield-3: "\f114";
+    $font-Flaticon-menu: "\f115";
+    $font-Flaticon-telephone: "\f116";

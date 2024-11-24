@@ -1,0 +1,28 @@
+/* page scrollling css for admin */
+/* Ensure the body and html take full height and prevent scrolling */
+html,
+body {
+	height: 100%;
+	margin: 0;
+	overflow: hidden; /* Prevent page-wide scrolling */
+}
+
+/* Page wrapper - main content */
+.page-wrapper {
+	flex-grow: 1; /* Expand to take remaining space */
+	height: 100vh; /* Full height */
+	display: flex;
+	flex-direction: column;
+}
+
+.page-content-wrapper {
+	flex-grow: 1;
+	overflow-y: auto; /* Scrollable content area */
+}
+
+/* Page wrapper - center content for reset password,verify password*/
+.wrapper_center {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
