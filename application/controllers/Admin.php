@@ -12,6 +12,7 @@ class Admin extends CI_Controller
         }
         $this->load->model('Appointment_model');
         $this->load->model('ContactModel'); // This model is used for inquiries
+        $this->load->model('CourseModel'); // Load the CourseModel
     }
 
     // Admin dashboard method
@@ -62,5 +63,19 @@ class Admin extends CI_Controller
     {
         $data['inquiry'] = $this->ContactModel->get_inquiry_by_id($id); // Correct model name
         echo json_encode($data['inquiry']);
+    }
+
+
+    public function view_courses()
+    {
+        $data['courses'] = $this->CourseModel->get_all_courses();
+        $this->load->view('admin/view_courses', $data);
+    }
+
+    public function delete_course($id)
+    {
+        $this->CourseModel->delete_course($id);
+        $this->session->set_flashdata('success', 'Course deleted successfully');
+        redirect('admin/view_courses');
     }
 }

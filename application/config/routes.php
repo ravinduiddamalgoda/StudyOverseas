@@ -96,7 +96,14 @@ $route['admin/view_inquiries'] = 'admin/view_inquiries';
 $route['admin/delete_inquiry/(:num)'] = 'admin/delete_inquiry/$1';// Route to delete an inquiry by ID
 $route['admin/view_inquiry/(:num)'] = 'admin/view_inquiry/$1'; // Route to view an inquiry by ID
 
+
+$route['admin/view_courses'] = 'admin/view_courses';
+$route['admin/delete_course/(:num)'] = 'admin/delete_course/$1';// Route to delete a course by ID
+
+
 $route['user/view_courses'] = 'admin/view_courses';
+
+
 $route['user/appointment'] = 'user/appointment';
 
 // $route['admin/user/create'] = 'admin/user/create';
