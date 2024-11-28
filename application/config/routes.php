@@ -98,7 +98,16 @@ $route['admin/view_inquiry/(:num)'] = 'admin/view_inquiry/$1'; // Route to view 
 
 
 $route['admin/view_courses'] = 'admin/view_courses';
+$route['admin/view_countries'] = "admin/view_countries";
+$route['admin/view_employees'] = "admin/view_employees";
+
 $route['admin/delete_course/(:num)'] = 'admin/delete_course/$1';// Route to delete a course by ID
+$route['admin/view_course/(:num)'] = 'admin/view_course/$1'; // Route to view a course by ID
+$route['admin/edit_course/(:num)'] = 'admin/edit_course/$1'; // Route to edit a course by ID
+
+$route['admin/delete_country/(:num)'] = 'admin/delete_country/$1';// Route to delete a country by ID
+$route['admin/view_country/(:num)'] = 'admin/view_country/$1'; // Route to view a country by ID
+$route['admin/edit_country/(:num)'] = 'admin/edit_country/$1'; // Route to edit a country by ID
 
 
 $route['user/view_courses'] = 'admin/view_courses';

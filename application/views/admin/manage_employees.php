@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Study Overseas - Courses List</title>
+    <title>Study Overseas - Employee List</title>
 
     <!-- Include Stylesheets -->
     <?php $this->load->view('inc/admin/admin_styles'); ?>
@@ -29,20 +29,20 @@
                 <div class="page-content">
                     <!-- breadcrumb -->
                     <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-                        <div class="breadcrumb-title pe-3">Courses List</div>
+                        <div class="breadcrumb-title pe-3">Employee List</div>
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
                                     <li class="breadcrumb-item"><a href="javascript:;"><i
                                                 class='bx bx-home-alt'></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Courses List</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Employee List</li>
                                 </ol>
                             </nav>
                         </div>
                         <div class="ms-auto">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-primary">Add New Course</button>
+                                <button type="button" class="btn btn-primary">Add New Employee</button>
                                 <!-- <button type="button"
                                     class="btn btn-primary bg-split-primary dropdown-toggle dropdown-toggle-split"
                                     data-bs-toggle="dropdown"> <span class="visually-hidden">Toggle Dropdown</span>
@@ -56,53 +56,50 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h4 class="mb-0">Courses List</h4>
+                                <h4 class="mb-0">Employee List</h4>
                             </div>
                             <hr />
                             <div class="table-responsive">
-                                <table id="example2" class="table table-striped table-bordered" style="width:100%">
+                                <table id="employee-table" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Country</th>
-                                            <th>Description</th>
-                                            <th>Requirements</th>
-                                            <th>University</th>
-                                            <th>Scholarship</th>
-                                            <th>English Requirement</th>
-                                            <th>Fee</th>
-                                            <th>Years</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Gender</th>
+                                            <th>Age</th>
+                                            <th>Contact No</th>
+                                            <th>Email</th>
+                                            <th>Qualification</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php if (!empty($courses)): ?>
-                                            <?php foreach ($courses as $course): ?>
+                                        <?php if (!empty($employees)): ?>
+                                            <?php foreach ($employees as $employee): ?>
                                                 <tr>
-                                                    <td><?php echo htmlspecialchars($course['Course_id']); ?></td>
-                                                    <td><?php echo htmlspecialchars($course['Course_name']); ?></td>
-                                                    <td><?php echo htmlspecialchars($course['Country']); ?></td>
-                                                    <td><?php echo htmlspecialchars($course['Course_description']); ?></td>
-                                                    <td><?php echo htmlspecialchars($course['Course_requirements']); ?></td>
-                                                    <td><?php echo htmlspecialchars($course['University']); ?></td>
-                                                    <td><?php echo htmlspecialchars($course['Scholarship']); ?></td>
-                                                    <td><?php echo htmlspecialchars($course['English_language_requirement']); ?></td>
-                                                    <td><?php echo htmlspecialchars($course['Course_fee']); ?></td>
-                                                    <td><?php echo htmlspecialchars($course['Years']); ?></td>
+                                                    <td><?php echo htmlspecialchars($employee['Emp_id']); ?></td>
+                                                    <td><?php echo htmlspecialchars($employee['Fname']); ?></td>
+                                                    <td><?php echo htmlspecialchars($employee['Lname']); ?></td>
+                                                    <td><?php echo htmlspecialchars($employee['Gender']); ?></td>
+                                                    <td><?php echo htmlspecialchars($employee['Age']); ?></td>
+                                                    <td><?php echo htmlspecialchars($employee['Contact_no']); ?></td>
+                                                    <td><?php echo htmlspecialchars($employee['Emp_email']); ?></td>
+                                                    <td><?php echo htmlspecialchars($employee['Qualification']); ?></td>
 
                                                     <td>
                                                         <div class="input-group">
                                                             <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                                id="actionsDropdown<?php echo htmlspecialchars($course['Course_id']); ?>"
+                                                                id="actionsDropdown<?php echo htmlspecialchars($employee['Emp_id']); ?>"
                                                                 data-bs-toggle="dropdown" aria-haspopup="true"
                                                                 aria-expanded="false">Actions</button>
                                                             <div class="dropdown-menu"
-                                                                aria-labelledby="actionsDropdown<?php echo htmlspecialchars($course['Course_id']); ?>">
+                                                                aria-labelledby="actionsDropdown<?php echo htmlspecialchars($employee['Emp_id']); ?>">
                                                                 <!-- Delete action using SweetAlert2 -->
                                                                 <a class="dropdown-item" href="javascript:void(0);"
-                                                                    onclick="confirmDelete(<?php echo htmlspecialchars($course['Course_id']); ?>)">Delete</a>
+                                                                    onclick="confirmDelete(<?php echo htmlspecialchars($employee['Emp_id']); ?>)">Delete</a>
                                                                 <!-- <a class="dropdown-item" href="javascript:void(0);"
-                                                                    onclick="viewCourse(<?php echo htmlspecialchars($course['Course_id']); ?>)">View</a> -->
+                                                                    onclick="viewCourse(<?php echo htmlspecialchars($employee['Emp_id']); ?>)">View</a> -->
                                                             </div>
                                                         </div>
                                                     </td>
@@ -111,7 +108,7 @@
                                             <?php endforeach; ?>
                                         <?php else: ?>
                                             <tr>
-                                                <td colspan="9" class="text-center">No courses found</td>
+                                                <td colspan="9" class="text-center">No Employees found</td>
                                             </tr>
                                         <?php endif; ?>
                                     </tbody>
@@ -124,12 +121,12 @@
             </div>
 
             <!-- Inquiry View Modal -->
-            <div class="modal fade" id="viewCourseModel" tabindex="-1" aria-labelledby="viewInquiryModalLabel"
+            <div class="modal fade" id="viewEmployeeModel" tabindex="-1" aria-labelledby="viewEmployeeModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="viewInquiryModalLabel">Inquiry Details</h5>
+                            <h5 class="modal-title" id="viewEmployeeModalLabel">Employee Details</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -166,19 +163,19 @@
         <script>
             $(document).ready(function () {
                 // Initialize the data table
-                var table = $('#example2').DataTable({
+                var table = $('#employee-table').DataTable({
                     responsive: true,
                     lengthChange: false,
                     buttons: ['copy', 'csv', 'excel', 'pdf', 'print', 'colvis']
                 });
 
                 // Append buttons container
-                table.buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+                table.buttons().container().appendTo('#employee-table_wrapper .col-md-6:eq(0)');
             });
 
             function viewCourse(id) {
                 $.ajax({
-                    url: "<?php echo base_url('admin/view_course/'); ?>" + id,
+                    url: "<?php echo base_url('admin/view_employee/'); ?>" + id,
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {
@@ -186,7 +183,7 @@
                         
 
                         // Show the modal
-                        $('#viewCourseModel').modal('show');
+                        $('#viewEmployeeModel').modal('show');
                     }
                 });
             }
@@ -203,7 +200,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Redirect to the delete URL or make an AJAX call to delete the data
-                        window.location.href = "<?php echo base_url('admin/delete_course/'); ?>" + id;
+                        window.location.href = "<?php echo base_url('admin/delete_employee/'); ?>" + id;
                     }
                 });
             }

@@ -61,7 +61,7 @@
 
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon icon-color-3"><i class="bx bx-user"></i>
+                <div class="parent-icon icon-color-3"><i class="bx bx-book-bookmark"></i>
                 </div>
                 <div class="menu-title">Course Management</div>
             </a>
@@ -71,6 +71,48 @@
                     <a href="<?php echo base_url('admin/view_courses'); ?>" target="">
                         <i class="bx bx-right-arrow-alt"></i>
                         Course List
+                    </a>
+                </li>
+                <?php endif?>
+            </ul>
+        </li>
+
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon icon-color-3"><i class="bx bx-globe"></i>
+                </div>
+                <div class="menu-title">Country Management</div>
+            </a>
+            <ul>
+            <?php if ($this->session->userdata('role') == 'admin'): ?> <!-- Check if the user is an admin -->
+                <li>
+                    <a href="<?php echo base_url('admin/view_countries'); ?>" target="">
+                        <i class="bx bx-right-arrow-alt"></i>
+                        Country List
+                    </a>
+                </li>
+                <?php endif?>
+            </ul>
+        </li>
+
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon icon-color-3"><i class="bx bxs-user-badge"></i>
+                </div>
+                <div class="menu-title">Employee Management</div>
+            </a>
+            <ul>
+            <?php if ($this->session->userdata('role') == 'admin'): ?> <!-- Check if the user is an admin -->
+                <li>
+                    <a href="<?php echo base_url('admin/view_employees'); ?>" target="">
+                        <i class="bx bx-right-arrow-alt"></i>
+                        Employee List
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('admin/view_employees/attendence'); ?>" target="">
+                        <i class="bx bx-right-arrow-alt"></i>
+                        Employee Attendance
                     </a>
                 </li>
                 <?php endif?>

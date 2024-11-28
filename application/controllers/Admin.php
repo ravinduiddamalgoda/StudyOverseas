@@ -13,6 +13,8 @@ class Admin extends CI_Controller
         $this->load->model('Appointment_model');
         $this->load->model('ContactModel'); // This model is used for inquiries
         $this->load->model('CourseModel'); // Load the CourseModel
+        $this->load->model('CountryModel'); // Load the CountryModel
+        $this->load->model('EmployeeModel'); // Load the EmployeeModel
     }
 
     // Admin dashboard method
@@ -65,11 +67,15 @@ class Admin extends CI_Controller
         echo json_encode($data['inquiry']);
     }
 
-
+    /************************************ Courses ************************************/
+    /**
+     * Summary of view_courses
+     * @return void
+     */
     public function view_courses()
     {
         $data['courses'] = $this->CourseModel->get_all_courses();
-        $this->load->view('admin/view_courses', $data);
+        $this->load->view('admin/manage_courses', $data);
     }
 
     public function delete_course($id)
@@ -77,5 +83,52 @@ class Admin extends CI_Controller
         $this->CourseModel->delete_course($id);
         $this->session->set_flashdata('success', 'Course deleted successfully');
         redirect('admin/view_courses');
+    }
+
+    public function view_course($id)
+    {
+        $data['course'] = $this->CourseModel->get_course_by_id($id);
+        echo json_encode($data['course']);
+    }
+
+    /************************************ Countries ************************************/
+    public function view_countries()
+    {
+        $data['countries'] = $this->CountryModel->get_all_countries();
+        $this->load->view('admin/manage_countries', $data);
+    }
+
+    public function delete_country($id)
+    {
+        $this->CountryModel->delete_country($id);
+        $this->session->set_flashdata('success', 'Country deleted successfully');
+        redirect('admin/view_countries');
+    }
+
+    public function view_country($id)
+    {
+        $data['country'] = $this->CountryModel->get_country_by_id($id);
+        echo json_encode($data['country']);
+    }
+
+
+    /************************************ Employees ************************************/
+    public function view_employees()
+    {
+        $data['employees'] = $this->EmployeeModel->get_all_employees();
+        $this->load->view('admin/manage_employees', $data);
+    }
+
+    public function delete_employee($id)
+    {
+        $this->EmployeeModel->delete_employee($id);
+        $this->session->set_flashdata('success', 'Employee deleted successfully');
+        redirect('admin/view_employees');
+    }
+
+    public function view_employee($id)
+    {
+        $data['employee'] = $this->EmployeeModel->get_employee_by_id($id);
+        echo json_encode($data['employee']);
     }
 }
