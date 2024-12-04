@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Search_model extends CI_Model {
+class Search_Model extends CI_Model {
 
     public function getSearchResults($query) {
         // Sample query to fetch search results from the database

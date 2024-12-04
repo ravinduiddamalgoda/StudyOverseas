@@ -55,65 +55,60 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'web/home';
 
 // web routes 
-$route['about'] = 'web/about';
-$route['services'] = 'web/services';
-$route['contact'] = 'web/contact';
-$route['search'] = 'web/search';
-$route['courses'] = 'web/courses';
-$route['appointment'] = 'web/appointment';
+$route['about'] = 'Web_Controller/about';
+$route['services'] = 'Web_Controller/services';
+$route['contact'] = 'Web_Controller/contact';
+$route['search'] = 'Web_Controller/search';
+$route['courses'] = 'Web_Controller/courses';
+$route['appointment'] = 'Web_Controller/appointment';
 
-$route['contact/submit_inquiry'] = 'ContactController/submit_inquiry';
-$route['appointment/submit_appointment'] = 'Appointment/submit_appointment';
-
-
-$route['admin'] = 'auth/login';
-$route['auth/login'] = 'auth/login';
-$route['auth/login_process'] = 'auth/login_process';
-$route['auth/register'] = 'auth/register';
-$route['auth/register_process'] = 'auth/register_process';
-$route['auth/logout'] = 'auth/logout';
-
-$route['admin/dashboard'] = 'admin/dashboard';
-$route['web/user/dashboard'] = 'user/dashboard';
-
-$route['auth/forgot_password'] = 'auth/forgot_password';
-$route['auth/send_otp'] = 'auth/send_otp';
-$route['auth/verify_otp'] = 'auth/verify_otp';
-$route['auth/validate_otp'] = 'auth/validate_otp';
-$route['auth/reset_password'] = 'auth/reset_password';
-$route['auth/update_password'] = 'auth/update_password';
-
-$route['admin/user'] = 'user/user_list';
-$route['admin/view_appointments'] = 'admin/view_appointments';
-$route['appointment/delete/(:num)'] = 'appointment/delete/$1';
-$route['appointment/view/(:num)'] = 'appointment/view/$1';
-$route['appointment/edit/(:num)'] = 'appointment/edit/$1';
-$route['appointment/update/(:num)'] = 'appointment/update/$1';
+$route['contact/submit_inquiry'] = 'Contact_Controller/submit_inquiry';
+$route['appointment/submit_appointment'] = 'Appointment_Controller/submit_appointment';
 
 
+$route['admin'] = 'Auth_Controller/login';
 
-$route['admin/view_inquiries'] = 'admin/view_inquiries';
-$route['admin/delete_inquiry/(:num)'] = 'admin/delete_inquiry/$1';// Route to delete an inquiry by ID
-$route['admin/view_inquiry/(:num)'] = 'admin/view_inquiry/$1'; // Route to view an inquiry by ID
+$route['auth/login'] = 'Auth_Controller/login';
+$route['auth/login_process'] = 'Auth_Controller/login_process';
+$route['auth/register'] = 'Auth_Controller/register';
+$route['auth/register_process'] = 'Auth_Controller/register_process';
+$route['auth/logout'] = 'Auth_Controller/logout';
+$route['auth/forgot_password'] = 'Auth_Controller/forgot_password';
+$route['auth/send_otp'] = 'Auth_Controller/send_otp';
+$route['auth/verify_otp'] = 'Auth_Controller/verify_otp';
+$route['auth/validate_otp'] = 'Auth_Controller/validate_otp';
+$route['auth/reset_password'] = 'Auth_Controller/reset_password';
+$route['auth/update_password'] = 'Auth_Controller/update_password';
+
+$route['admin/dashboard'] = 'Admin_Controller/dashboard';
+
+$route['admin/user'] = 'Admin_Controller/user_list';
+
+$route['admin/view_appointments'] = 'Admin_Controller/view_appointments';
+$route['admin/view_appointment/(:num)'] = 'Admin_Controller/view_appointment/$1';
+$route['admin/edit_appointment/(:num)'] = 'Admin_Controller/edit_appointment/$1';
+$route['admin/update_appointment/(:num)'] = 'Admin_Controller/update_appointment/$1';
+$route['admin/delete_appointment/(:num)'] = 'Admin_Controller/delete_appointment/$1';
+
+$route['admin/view_inquiries'] = 'Admin_Controller/view_inquiries';
+$route['admin/delete_inquiry/(:num)'] = 'Admin_Controller/delete_inquiry/$1';// Route to delete an inquiry by ID
+$route['admin/view_inquiry/(:num)'] = 'Admin_Controller/view_inquiry/$1'; // Route to view an inquiry by ID
+
+$route['admin/view_courses'] = 'Admin_Controller/view_courses';
+$route['admin/view_course/(:num)'] = 'Admin_Controller/view_course/$1'; // Route to view a course by ID
+$route['admin/edit_course/(:num)'] = 'Admin_Controller/edit_course/$1'; // Route to edit a course by ID
+$route['admin/delete_course/(:num)'] = 'Admin_Controller/delete_course/$1';// Route to delete a course by ID
+
+$route['admin/view_countries'] = "Admin_Controller/view_countries";
+$route['admin/delete_country/(:num)'] = 'Admin_Controller/delete_country/$1';// Route to delete a country by ID
+$route['admin/view_country/(:num)'] = 'Admin_Controller/view_country/$1'; // Route to view a country by ID
+$route['admin/edit_country/(:num)'] = 'Admin_Controller/edit_country/$1'; // Route to edit a country by ID
+
+$route['admin/view_employees'] = "Admin_Controller/view_employees";
 
 
-$route['admin/view_courses'] = 'admin/view_courses';
-$route['admin/view_countries'] = "admin/view_countries";
-$route['admin/view_employees'] = "admin/view_employees";
-
-$route['admin/delete_course/(:num)'] = 'admin/delete_course/$1';// Route to delete a course by ID
-$route['admin/view_course/(:num)'] = 'admin/view_course/$1'; // Route to view a course by ID
-$route['admin/edit_course/(:num)'] = 'admin/edit_course/$1'; // Route to edit a course by ID
-
-$route['admin/delete_country/(:num)'] = 'admin/delete_country/$1';// Route to delete a country by ID
-$route['admin/view_country/(:num)'] = 'admin/view_country/$1'; // Route to view a country by ID
-$route['admin/edit_country/(:num)'] = 'admin/edit_country/$1'; // Route to edit a country by ID
-
-
-$route['user/view_courses'] = 'admin/view_courses';
-
-
-$route['user/appointment'] = 'user/appointment';
+$route['user/dashboard'] = 'User_Controller/dashboard';
+$route['user/new_appointment'] = 'User_Controller/new_appointment';
 
 // $route['admin/user/create'] = 'admin/user/create';
 // $route['admin/user/store'] = 'admin/user/store';

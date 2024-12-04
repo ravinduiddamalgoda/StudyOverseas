@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class ContactController extends CI_Controller
+class Contact_Controller extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('ContactModel');
+        $this->load->model('Contact_Model');
         $this->load->library(['form_validation', 'session', 'email']); // Load necessary libraries
         $this->load->helper('url'); // Load URL helper for redirects
     }
@@ -43,7 +43,7 @@ class ContactController extends CI_Controller
             );
 
             // Call the model to save data
-            if ($this->ContactModel->save_inquiry($data)) {
+            if ($this->Contact_Model->save_inquiry($data)) {
                 // Send email after successful submission
                 if ($this->send_email($data)) {
                     // Success response

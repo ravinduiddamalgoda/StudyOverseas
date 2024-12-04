@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Auth extends CI_Controller
+class Auth_Controller extends CI_Controller
 {
   public function __construct()
   {
     // Call parent constructor
     parent::__construct();
-    $this->load->model('Auth_model'); // Load the Auth model
+    $this->load->model('Auth_Model'); // Load the Auth model
     $this->load->library(['form_validation', 'session', 'email']); // Load necessary libraries
     $this->load->helper('url'); // Load URL helper for redirects
   }
@@ -80,7 +80,7 @@ class Auth extends CI_Controller
       $remember_me = $this->input->post('remember_me');
 
       // Get user by email
-      $user = $this->Auth_model->get_user($email); // Ensure your model fetches the user's role too.
+      $user = $this->Auth_Model->get_user($email); // Ensure your model fetches the user's role too.
 
       if ($user && password_verify($password, $user->password)) {
         // Set user session data
@@ -184,7 +184,7 @@ class Auth extends CI_Controller
       ];
 
       // Register new user
-      $this->Auth_model->register_user($data);
+      $this->Auth_Model->register_user($data);
 
       $this->session->set_flashdata('success', 'Registration successful, please login.');
       redirect('auth/login');
@@ -227,7 +227,7 @@ class Auth extends CI_Controller
     }
 
     // Check if email exists in the database
-    $user = $this->Auth_model->get_user_by_email($email);
+    $user = $this->Auth_Model->get_user_by_email($email);
 
     if (!$user) {
       echo json_encode(['error' => true, 'message' => 'Email not found in our records.']);
@@ -239,7 +239,7 @@ class Auth extends CI_Controller
     $otp_expiration = time() + 300; // OTP is valid for 5 minutes
 
     // Save OTP and expiration in the database
-    $this->Auth_model->save_otp($email, $otp, $otp_expiration);
+    $this->Auth_Model->save_otp($email, $otp, $otp_expiration);
 
     // Set the email in session for later verification
     $this->session->set_userdata('reset_email', $email); // Set the email in session
@@ -282,7 +282,7 @@ class Auth extends CI_Controller
     $email = $this->session->userdata('reset_email');
 
     // Validate OTP using the model
-    if ($this->Auth_model->validate_otp($email, $otp)) {
+    if ($this->Auth_Model->validate_otp($email, $otp)) {
       echo json_encode(['error' => false, 'message' => 'OTP verified successfully.']);
     } else {
       // Include email and OTP in the response for the console
@@ -321,7 +321,7 @@ class Auth extends CI_Controller
     $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 
     // Update the password in the database
-    $this->Auth_model->update_password($email, $password);
+    $this->Auth_Model->update_password($email, $password);
 
     // Clear reset_email session after password is updated
     $this->session->unset_userdata('reset_email');

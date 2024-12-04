@@ -8,20 +8,20 @@
     <title>Study Overseas - User Dashboard</title>
 
     <!-- Include Stylesheets -->
-
+    <?php $this->load->view('inc/user/user_styles'); ?>
 </head>
 
 <body>
     <!-- Wrapper -->
     <div class="wrapper">
         <!-- Sidebar -->
-        <?php $this->load->view('inc/admin/left_menu'); ?>
+        <?php $this->load->view('inc/user/left_menu'); ?>
         <!-- End Sidebar -->
 
         <!-- Page Wrapper -->
         <div class="page-wrapper">
             <!-- Header -->
-            <?php $this->load->view('inc/web/user_header'); ?>
+            <?php $this->load->view('inc/user/header'); ?>
             <!-- End Header -->
 
             <!-- Page Content Wrapper -->
@@ -34,7 +34,8 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
                                     <li class="breadcrumb-item">
-                                        <a href="<?php echo base_url('user/dashboard'); ?>"><i class='bx bx-home-alt'></i></a>
+                                        <a href="<?php echo base_url('user/dashboard'); ?>"><i
+                                                class='bx bx-home-alt'></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                                 </ol>
@@ -155,17 +156,22 @@
         <!-- End Back To Top Button -->
 
         <!-- Footer -->
-        <?php $this->load->view('inc/web/user_footer'); ?>
+        <?php $this->load->view('inc/user/footer'); ?>
         <!-- End Footer -->
     </div>
     <!-- End Wrapper -->
 
     <!-- Start Theme Switcher -->
-    <?php $this->load->view('inc/web/user_theme_switcher'); ?>
+    <?php $this->load->view('inc/web/theme_switcher'); ?>
     <!-- End Theme Switcher -->
 
     <!-- Include Scripts -->
-    <?php $this->load->view('inc/web/user_scripts'); ?>
+    <?php $this->load->view('inc/user/user_scripts'); ?>
+
+    <script>
+        new PerfectScrollbar('.dashboard-social-list');
+        new PerfectScrollbar('.dashboard-top-countries');
+    </script>
 </body>
 
 </html>

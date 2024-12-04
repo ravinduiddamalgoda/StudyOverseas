@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Appointment extends CI_Controller
+class Appointment_Controller extends CI_Controller
 {
 
   public function __construct()
   {
     parent::__construct();
-    $this->load->model('Appointment_model');
+    $this->load->model('Appointment_Model');
     $this->load->helper('url');
     $this->load->library(['form_validation', 'session', 'email']);
   }
@@ -54,7 +54,7 @@ class Appointment extends CI_Controller
       // exit();
 
       // Call the model to save data
-      if ($this->Appointment_model->save_appointment($data)) {
+      if ($this->Appointment_Model->save_appointment($data)) {
         // Send email after successful submission
         if ($this->send_email($data)) {
           // Success response
@@ -82,7 +82,7 @@ class Appointment extends CI_Controller
   // Delete appointment
   public function delete($id)
   {
-    $result = $this->Appointment_model->delete_appointment($id);
+    $result = $this->Appointment_Model->delete_appointment($id);
     if ($result) {
       echo json_encode(['status' => 'success', 'message' => 'Appointment deleted successfully']);
     } else {
@@ -93,21 +93,21 @@ class Appointment extends CI_Controller
   // View appointment
   public function view($id)
   {
-    $data = $this->Appointment_model->get_appointment_by_id($id);
+    $data = $this->Appointment_Model->get_appointment_by_id($id);
     echo json_encode($data);
   }
 
   // Edit appointment
   public function edit($id)
   {
-    $data = $this->Appointment_model->get_appointment_by_id($id);
+    $data = $this->Appointment_Model->get_appointment_by_id($id);
     echo json_encode($data);
   }
 
   // Update appointment
   public function update($id) {
     // Load model
-    $this->load->model('Appointment_model');
+    $this->load->model('Appointment_Model');
     
     // Get data from POST request
     $data = array(
@@ -123,7 +123,7 @@ class Appointment extends CI_Controller
     );
 
     // Call model function to update the appointment
-    if ($this->Appointment_model->updateAppointment($id, $data)) {
+    if ($this->Appointment_Model->updateAppointment($id, $data)) {
         echo json_encode(['status' => 'success', 'message' => 'Appointment updated successfully.']);
     } else {
         echo json_encode(['status' => 'error', 'message' => 'Failed to update appointment.']);
@@ -134,10 +134,10 @@ class Appointment extends CI_Controller
   public function get_appointments()
   {
     $date = $this->input->get('date'); // Get the selected date
-    $this->load->model('Appointment_model'); // Load your model
+    $this->load->model('Appointment_Model'); // Load your model
 
     // Fetch appointments from the database
-    $appointments = $this->Appointment_model->get_appointments_by_date($date);
+    $appointments = $this->Appointment_Model->get_appointments_by_date($date);
     echo json_encode($appointments); // Return appointments as JSON
   }
 

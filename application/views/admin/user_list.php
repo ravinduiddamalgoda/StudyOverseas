@@ -150,7 +150,7 @@
         </div>
         <!-- end wrapper -->
         <!--start switcher-->
-        <?php $this->load->view('inc/admin/theme_switcher'); ?>
+        <?php $this->load->view('inc/web/theme_switcher'); ?>
         <!--end switcher-->
         <!-- JavaScript -->
 

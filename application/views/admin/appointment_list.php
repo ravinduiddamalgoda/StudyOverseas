@@ -164,7 +164,7 @@
         </div>
         <!-- end wrapper -->
         <!--start switcher-->
-        <?php $this->load->view('inc/admin/theme_switcher'); ?>
+        <?php $this->load->view('inc/web/theme_switcher'); ?>
         <!--end switcher-->
         <!-- JavaScript -->
 
@@ -217,7 +217,7 @@
             // View Appointment
             function viewAppointment(id) {
                 $.ajax({
-                    url: '<?php echo base_url("appointment/view/"); ?>' + id,
+                    url: '<?php echo base_url("admin/view_appointment/"); ?>' + id,
                     type: 'GET',
                     dataType: 'json', // Expect JSON data from the server
                     success: function (response) {
@@ -249,7 +249,7 @@
             // Edit Appointment (Similar to View but with editable fields)
             function editAppointment(id) {
                 $.ajax({
-                    url: '<?php echo base_url("appointment/edit/"); ?>' + id,
+                    url: '<?php echo base_url("admin/edit_appointment/"); ?>' + id,
                     type: 'GET',
                     dataType: 'json', // Expect JSON data from the server
                     success: function (response) {
@@ -318,7 +318,7 @@
                 };
 
                 $.ajax({
-                    url: '<?php echo base_url("appointment/update/"); ?>' + id,
+                    url: '<?php echo base_url("admin/update_appointment/"); ?>' + id,
                     type: 'POST',
                     data: formData,
                     dataType: 'json', // Expect JSON response from the server

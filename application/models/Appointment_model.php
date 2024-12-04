@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Appointment_model extends CI_Model
+class Appointment_Model extends CI_Model
 {
 
     public function save_appointment($data)
@@ -51,7 +51,7 @@ class Appointment_model extends CI_Model
     }
 
     // Update appointment
-    public function updateAppointment($id, $data) {
+    public function update_appointment($id, $data) {
         $this->db->where('id', $id);
         return $this->db->update('appointments', $data); // Assuming your table name is appointments
     }

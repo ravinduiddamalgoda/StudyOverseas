@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth_model extends CI_Model {
+class Auth_Model extends CI_Model {
 
     // Fetch a user by email
     public function get_user($email) {
