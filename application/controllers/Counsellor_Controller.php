@@ -35,4 +35,17 @@ class Counsellor_Controller extends CI_Controller
 
         $this->load->view('counsellor/dashboard', $data);
     }
+
+    public function chat_list()
+    {
+        $role = $this->session->userdata('role');
+
+        if ($role !== 'counsellor') {
+            $this->session->set_flashdata('error', 'You do not have permission to access this page');
+            redirect('auth/login');
+        }
+
+        $data['chats'] = 'Chat list';
+        $this->load->view('counsellor/chat_list', $data);
+    }
 }

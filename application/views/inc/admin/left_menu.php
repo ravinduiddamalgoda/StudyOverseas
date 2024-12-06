@@ -13,17 +13,11 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
-            <a href="<?php echo base_url('admin/dashboard'); ?>" class="has-arrow">
+            <a href="<?php echo base_url('admin/dashboard'); ?>" class="">
                 <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
             </a>
-            <!-- <ul>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Analytics</a>
-                </li>
-                <li> <a href="index2.html"><i class="bx bx-right-arrow-alt"></i>Sales</a>
-                </li>
-            </ul> -->
         </li>
 
         <!-- <li class="menu-label">Pages</li> -->

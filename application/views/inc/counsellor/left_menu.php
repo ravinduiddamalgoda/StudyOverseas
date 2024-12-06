@@ -13,18 +13,29 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
-            <a href="<?php echo base_url('councellor/dashboard'); ?>" class="has-arrow">
+            <a href="<?php echo base_url('counsellor/dashboard'); ?>" class="">
                 <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
             </a>
-            <!-- <ul>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Analytics</a>
-                </li>
-                <li> <a href="index2.html"><i class="bx bx-right-arrow-alt"></i>Sales</a>
-                </li>
-            </ul> -->
         </li>
+
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon icon-color-3"><i class="bx bx-message-dots"></i>
+                </div>
+                <div class="menu-title">Chat Management</div>
+            </a>
+            <ul>
+            <?php if ($this->session->userdata('role') == 'counsellor'): ?> <!-- Check if the user is an admin -->
+                <li>
+                    <a href="<?php echo base_url('counsellor/chats'); ?>" target="">
+                        <i class="bx bx-right-arrow-alt"></i>
+                        Chat List
+                    </a>
+                </li>
+                <?php endif?>
+            </ul>
     </ul>
     <!--end navigation-->
 </div>

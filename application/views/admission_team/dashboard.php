@@ -16,10 +16,10 @@
     <!-- wrapper -->
     <div class="wrapper">
         <!--sidebar-wrapper-->
-        <?php $this->load->view('inc/counsellor/left_menu'); ?>
+        <?php $this->load->view('inc/admission_team/left_menu'); ?>
         <!--end sidebar-wrapper-->
         <!--header-->
-        <?php $this->load->view('inc/counsellor/header'); ?>
+        <?php $this->load->view('inc/admission_team/header'); ?>
         <!--end header-->
         <!--page-wrapper-->
         <div class="page-wrapper">
@@ -41,7 +41,7 @@
                 class='bx bxs-up-arrow-alt'></i></a>
         <!--End Back To Top Button-->
         <!--footer -->
-        <?php $this->load->view('inc/counsellor/footer'); ?>
+        <?php $this->load->view('inc/admission_team/footer'); ?>
         <!-- end footer -->
     </div>
     <!-- end wrapper -->
