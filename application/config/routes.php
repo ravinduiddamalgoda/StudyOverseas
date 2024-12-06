@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 // $route['default_controller'] = 'auth/login';
 // $route['default_controller'] = 'auth/web_login';
-$route['default_controller'] = 'web/home';
+$route['default_controller'] = 'Web_Controller/home';
 
 // web routes 
 $route['about'] = 'Web_Controller/about';
@@ -82,33 +82,34 @@ $route['auth/update_password'] = 'Auth_Controller/update_password';
 
 $route['admin/dashboard'] = 'Admin_Controller/dashboard';
 
-$route['admin/user'] = 'Admin_Controller/user_list';
+$route['admin/users'] = 'Admin_Controller/user_list';
+$route['admin/user/add'] = 'Admin_Controller/create_user';
 
-$route['admin/view_appointments'] = 'Admin_Controller/view_appointments';
-$route['admin/view_appointment/(:num)'] = 'Admin_Controller/view_appointment/$1';
-$route['admin/edit_appointment/(:num)'] = 'Admin_Controller/edit_appointment/$1';
-$route['admin/update_appointment/(:num)'] = 'Admin_Controller/update_appointment/$1';
-$route['admin/delete_appointment/(:num)'] = 'Admin_Controller/delete_appointment/$1';
+$route['admin/appointments'] = 'Admin_Controller/view_appointments';
+$route['admin/appointment/(:num)'] = 'Admin_Controller/view_appointment/$1';
+$route['admin/appointment/edit/(:num)'] = 'Admin_Controller/edit_appointment/$1';
+$route['admin/appointment/update/(:num)'] = 'Admin_Controller/update_appointment/$1';
+$route['admin/appointment/delete/(:num)'] = 'Admin_Controller/delete_appointment/$1';
 
-$route['admin/view_inquiries'] = 'Admin_Controller/view_inquiries';
-$route['admin/delete_inquiry/(:num)'] = 'Admin_Controller/delete_inquiry/$1';// Route to delete an inquiry by ID
-$route['admin/view_inquiry/(:num)'] = 'Admin_Controller/view_inquiry/$1'; // Route to view an inquiry by ID
+$route['admin/inquiries'] = 'Admin_Controller/view_inquiries';
+$route['admin/inquiry/(:num)'] = 'Admin_Controller/view_inquiry/$1'; // Route to view an inquiry by ID
+$route['admin/inquiry/delete/(:num)'] = 'Admin_Controller/delete_inquiry/$1';// Route to delete an inquiry by ID
 
-$route['admin/view_courses'] = 'Admin_Controller/view_courses';
-$route['admin/view_course/(:num)'] = 'Admin_Controller/view_course/$1'; // Route to view a course by ID
-$route['admin/edit_course/(:num)'] = 'Admin_Controller/edit_course/$1'; // Route to edit a course by ID
-$route['admin/delete_course/(:num)'] = 'Admin_Controller/delete_course/$1';// Route to delete a course by ID
+$route['admin/courses'] = 'Admin_Controller/view_courses';
+$route['admin/course/(:num)'] = 'Admin_Controller/view_course/$1'; // Route to view a course by ID
+$route['admin/course/edit/(:num)'] = 'Admin_Controller/edit_course/$1'; // Route to edit a course by ID
+$route['admin/course/delete/(:num)'] = 'Admin_Controller/delete_course/$1';// Route to delete a course by ID
 
-$route['admin/view_countries'] = "Admin_Controller/view_countries";
-$route['admin/delete_country/(:num)'] = 'Admin_Controller/delete_country/$1';// Route to delete a country by ID
-$route['admin/view_country/(:num)'] = 'Admin_Controller/view_country/$1'; // Route to view a country by ID
-$route['admin/edit_country/(:num)'] = 'Admin_Controller/edit_country/$1'; // Route to edit a country by ID
+$route['admin/countries'] = "Admin_Controller/view_countries";
+$route['admin/country/(:num)'] = 'Admin_Controller/view_country/$1'; // Route to view a country by ID
+$route['admin/country/edit/(:num)'] = 'Admin_Controller/edit_country/$1'; // Route to edit a country by ID
+$route['admin/country/delete/(:num)'] = 'Admin_Controller/delete_country/$1';// Route to delete a country by ID
 
-$route['admin/view_employees'] = "Admin_Controller/view_employees";
+$route['admin/employees'] = "Admin_Controller/view_employees";
 
 
 $route['user/dashboard'] = 'User_Controller/dashboard';
-$route['user/new_appointment'] = 'User_Controller/new_appointment';
+$route['user/appointment/add'] = 'User_Controller/new_appointment';
 
 // $route['admin/user/create'] = 'admin/user/create';
 // $route['admin/user/store'] = 'admin/user/store';

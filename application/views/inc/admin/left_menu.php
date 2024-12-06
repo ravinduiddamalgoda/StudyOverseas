@@ -36,16 +36,20 @@
             <ul>
                 <?php if ($this->session->userdata('role') == 'admin'): ?> <!-- Check if the user is an admin -->
                     <li>
-                        <a href="<?php echo base_url('admin/user'); ?>" target=""><i class="bx bx-right-arrow-alt"></i>User
+                        <a href="<?php echo base_url('admin/users'); ?>" target=""><i class="bx bx-right-arrow-alt"></i>User
                             List</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('admin/view_appointments'); ?>" target=""><i
+                        <a href="<?php echo base_url('admin/user/create'); ?>" target=""><i class="bx bx-right-arrow-alt"></i>Create
+                            User</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('admin/appointments'); ?>" target=""><i
                                 class="bx bx-right-arrow-alt"></i>Appointment
                             List</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('admin/view_inquiries'); ?>" target=""><i
+                        <a href="<?php echo base_url('admin/inqueries'); ?>" target=""><i
                                 class="bx bx-right-arrow-alt"></i>Inquiry List</a>
                     </li>
 
@@ -68,7 +72,7 @@
             <ul>
             <?php if ($this->session->userdata('role') == 'admin'): ?> <!-- Check if the user is an admin -->
                 <li>
-                    <a href="<?php echo base_url('admin/view_courses'); ?>" target="">
+                    <a href="<?php echo base_url('admin/courses'); ?>" target="">
                         <i class="bx bx-right-arrow-alt"></i>
                         Course List
                     </a>
@@ -86,7 +90,7 @@
             <ul>
             <?php if ($this->session->userdata('role') == 'admin'): ?> <!-- Check if the user is an admin -->
                 <li>
-                    <a href="<?php echo base_url('admin/view_countries'); ?>" target="">
+                    <a href="<?php echo base_url('admin/countries'); ?>" target="">
                         <i class="bx bx-right-arrow-alt"></i>
                         Country List
                     </a>
@@ -104,13 +108,13 @@
             <ul>
             <?php if ($this->session->userdata('role') == 'admin'): ?> <!-- Check if the user is an admin -->
                 <li>
-                    <a href="<?php echo base_url('admin/view_employees'); ?>" target="">
+                    <a href="<?php echo base_url('admin/employees'); ?>" target="">
                         <i class="bx bx-right-arrow-alt"></i>
                         Employee List
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url('admin/view_employees/attendence'); ?>" target="">
+                    <a href="<?php echo base_url('admin/employees/attendence'); ?>" target="">
                         <i class="bx bx-right-arrow-alt"></i>
                         Employee Attendance
                     </a>

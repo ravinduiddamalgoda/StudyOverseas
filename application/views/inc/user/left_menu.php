@@ -33,7 +33,7 @@
             <ul>
                 <?php if ($this->session->userdata('role') == 'student'): ?> <!-- Check if the user is an admin -->
                     <li>
-                        <a href="<?php echo base_url('user/new_appointment'); ?>" target=""><i
+                        <a href="<?php echo base_url('user/appointment/add'); ?>" target=""><i
                                 class="bx bx-right-arrow-alt"></i>New Appointment</a>
                     </li>
 
