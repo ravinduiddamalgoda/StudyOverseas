@@ -8,20 +8,20 @@
     <title>Study Overseas - User Dashboard</title>
 
     <!-- Include Stylesheets -->
-    <?php $this->load->view('inc/user/user_styles'); ?>
+    <?php $this->load->view('inc/admin/admin_styles'); ?>
 </head>
 
 <body>
     <!-- Wrapper -->
     <div class="wrapper">
         <!-- Sidebar -->
-        <?php $this->load->view('inc/user/left_menu'); ?>
+        <?php $this->load->view('inc/admin/left_menu'); ?>
         <!-- End Sidebar -->
 
         <!-- Page Wrapper -->
         <div class="page-wrapper">
             <!-- Header -->
-            <?php $this->load->view('inc/user/header'); ?>
+            <?php $this->load->view('inc/admin/header'); ?>
             <!-- End Header -->
 
             <!-- Page Content Wrapper -->
@@ -29,15 +29,15 @@
                 <div class="page-content">
                     <!-- Breadcrumb -->
                     <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-                        <div class="breadcrumb-title pe-3">User Dashboard</div>
+                        <div class="breadcrumb-title pe-3">Admin Dashboard</div>
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
                                     <li class="breadcrumb-item">
-                                        <a href="<?php echo base_url('user/dashboard'); ?>"><i
+                                        <a href="<?php echo base_url('admin/dashboard'); ?>"><i
                                                 class='bx bx-home-alt'></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">New Appointment</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Create User</li>
                                 </ol>
                             </nav>
                         </div>
@@ -52,15 +52,19 @@
                                 <div class="col-md-8">
                                     <div class="card shadow">
                                         <div class="card-header bg-primary text-white">
-                                            <h3 class="card-title">Appointment Details</h3>
+                                            <h3 class="card-title">User Details</h3>
                                         </div>
                                         <div class="card-body">
-                                            <form action="<?php echo base_url(); ?>appointment/submit_appointment"
-                                                method="POST">
+                                            <form action="<?php echo base_url('admin/user/add'); ?>" method="POST">
                                                 <div class="mb-3">
-                                                    <label for="name" class="form-label">Name</label>
-                                                    <input type="text" class="form-control" id="name" name="name"
-                                                        required>
+                                                    <label for="first_name" class="form-label">First Name</label>
+                                                    <input type="text" class="form-control" id="first_name"
+                                                        name="first_name" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="last_name" class="form-label">Last Name</label>
+                                                    <input type="text" class="form-control" id="last_name"
+                                                        name="last_name" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="email" class="form-label">Email</label>
@@ -68,21 +72,22 @@
                                                         required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="phone" class="form-label">Phone</label>
-                                                    <input type="text" class="form-control" id="phone" name="phone"
-                                                        required>
+                                                    <label for="password" class="form-label">Password</label>
+                                                    <input type="password" class="form-control" id="password"
+                                                        name="password" required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="date" class="form-label">Appointment Date</label>
-                                                    <input type="date" class="form-control" id="date" name="date"
-                                                        required>
+                                                    <label for="role" class="form-label">Role</label>
+                                                    <select class="form-select" id="role" name="role" required>
+                                                        <option value="admin">Admin</option>
+                                                        <option value="student">Student</option>
+                                                    </select>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="message" class="form-label">Message</label>
-                                                    <textarea class="form-control" id="message" name="message"
-                                                        rows="3"></textarea>
+                                                </br>
+                                                <!-- align the button to the right -->
+                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                    <button type="submit" name="submit" value="submit" class="btn btn-primary">Submit</button>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
                                             </form>
                                         </div>
                                     </div>
@@ -108,7 +113,7 @@
         <!-- End Back To Top Button -->
 
         <!-- Footer -->
-        <?php $this->load->view('inc/user/footer'); ?>
+        <?php $this->load->view('inc/admin/footer'); ?>
         <!-- End Footer -->
     </div>
     <!-- End Wrapper -->
@@ -118,7 +123,7 @@
     <!-- End Theme Switcher -->
 
     <!-- Include Scripts -->
-    <?php $this->load->view('inc/user/user_scripts'); ?>
+    <?php $this->load->view('inc/admin/admin_scripts'); ?>
 
     <script>
         new PerfectScrollbar('.dashboard-social-list');

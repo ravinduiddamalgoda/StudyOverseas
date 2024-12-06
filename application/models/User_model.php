@@ -13,4 +13,8 @@ class User_Model extends CI_Model {
         $query = $this->db->get('users'); // Get all users from the 'users' table
         return $query->result_array(); // Return the result as an array
     }
+
+    public function create_user($data) {
+        $this->db->insert('users', $data); // Insert the data into the 'users' table
+    }
 }

@@ -57,7 +57,7 @@
                                 <li class="dropdown"><a href="<?php echo base_url('courses'); ?>">Courses</a></li>
                                 <li><a href="<?php echo base_url('contact'); ?>">Contact Us</a></li>
                                 <li><a href="<?php echo base_url('appointment'); ?>">Appointment</a></li>
-                                <li><a href="<?php echo base_url('auth/web_login'); ?>">Student Portal</a></li>
+                                <li><a href="<?php echo base_url('auth/login'); ?>">Student Portal</a></li>
                             </ul>
                         </div>
 

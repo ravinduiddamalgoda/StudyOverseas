@@ -40,7 +40,7 @@
                             List</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('admin/user/create'); ?>" target=""><i class="bx bx-right-arrow-alt"></i>Create
+                        <a href="<?php echo base_url('admin/user/add'); ?>" target=""><i class="bx bx-right-arrow-alt"></i>Create
                             User</a>
                     </li>
                     <li>

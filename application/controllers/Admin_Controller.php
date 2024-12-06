@@ -45,6 +45,38 @@ class Admin_Controller extends CI_Controller
         $this->load->view('admin/user_list', $data);
     }
 
+    public function user_create()
+    { 
+        if($this->input->post('submit')) {
+            $this->form_validation->set_rules('first_name', 'First Name', 'required');
+            $this->form_validation->set_rules('last_name', 'Last Name', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
+            $this->form_validation->set_rules('password', 'Password', 'required');
+            $this->form_validation->set_rules('role', 'Role', 'required');
+
+            if ($this->form_validation->run() == FALSE) {
+                $this->load->view('admin/user_create');
+                $this->session->set_flashdata('error', validation_errors());
+                return;
+            }
+
+            $data = array(
+                'first_name' => $this->input->post('first_name'),
+                'last_name' => $this->input->post('last_name'),
+                'email' => $this->input->post('email'),
+                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'role' => $this->input->post('role'),
+                'created_at' => date('Y-m-d H:i:s')
+            );
+
+            $this->User_Model->create_user($data);
+            $this->session->set_flashdata('success', 'User created successfully');
+            redirect('admin/users');
+        }else{
+            $this->load->view('admin/user_create');
+        }
+    }
+
     // Function to view appointments
     public function view_appointments()
     {

@@ -83,7 +83,7 @@ $route['auth/update_password'] = 'Auth_Controller/update_password';
 $route['admin/dashboard'] = 'Admin_Controller/dashboard';
 
 $route['admin/users'] = 'Admin_Controller/user_list';
-$route['admin/user/add'] = 'Admin_Controller/create_user';
+$route['admin/user/add'] = 'Admin_Controller/user_create';
 
 $route['admin/appointments'] = 'Admin_Controller/view_appointments';
 $route['admin/appointment/(:num)'] = 'Admin_Controller/view_appointment/$1';

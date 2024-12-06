@@ -41,11 +41,11 @@
                         </div>
                         <div class="ms-auto">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-primary">Add New Member</button>
-                                <button type="button"
+                                <a type="button" class="btn btn-primary" href = <?php echo base_url('admin/user/add')?>>Add New Member</a>
+                                <!-- <button type="button"
                                     class="btn btn-primary bg-split-primary dropdown-toggle dropdown-toggle-split"
                                     data-bs-toggle="dropdown"> <span class="visually-hidden">Toggle Dropdown</span>
-                                </button>
+                                </button> -->
                                 <!-- <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-start"> <a
                                         class="dropdown-item" href="javascript:;">Action</a>
                                     <a class="dropdown-item" href="javascript:;">Another action</a>
