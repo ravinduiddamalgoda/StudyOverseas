@@ -166,4 +166,10 @@ class User_Controller extends CI_Controller
         }
     }
 
+    public function get_councilor()
+    {
+        $councilor = $this->User_Model->get_councilor();
+        echo json_encode($councilor);
+    }
+
 }

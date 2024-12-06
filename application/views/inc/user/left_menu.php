@@ -32,13 +32,27 @@
                 <div class="menu-title">Appointments</div>
             </a>
             <ul>
-                <?php if ($this->session->userdata('role') == 'student'): ?>
-                    <li>
-                        <a href="<?php echo base_url('user/appointment/add'); ?>"><i class="bx bx-right-arrow-alt"></i>New Appointment</a>
-                    </li>
-                <?php endif; ?>
                 <li>
                     <a href="<?php echo base_url('user/appointment/view'); ?>"><i class="bx bx-right-arrow-alt"></i>View Appointments</a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('user/appointment/add'); ?>"><i class="bx bx-right-arrow-alt"></i>New Appointment</a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Applications Section -->
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon icon-color-2"><i class="bx bx-file"></i></div>
+                <div class="menu-title">Applications</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="<?php echo base_url('user/application'); ?>"><i class="bx bx-right-arrow-alt"></i>View Applications</a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('user/application/create'); ?>"><i class="bx bx-right-arrow-alt"></i>New Application</a>
                 </li>
             </ul>
         </li>

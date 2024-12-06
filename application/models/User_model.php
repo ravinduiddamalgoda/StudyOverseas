@@ -43,4 +43,10 @@ class User_Model extends CI_Model {
         $this->db->where('id', $id);
         $this->db->update('users', ['password' => $password]);
     }
+
+    public function get_councilor() {
+        $this->db->where('role', 'councilor');
+        $query = $this->db->get('users');
+        return $query->result_array();
+    }
 }
