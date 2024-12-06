@@ -57,4 +57,14 @@ class Appointment_Model extends CI_Model
     }
     
 
+    public function get_appointments_by_email($email)
+    {
+        $this->db->select('*');
+        $this->db->from('appointments');
+        $this->db->where('email', $email);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    
+
 }

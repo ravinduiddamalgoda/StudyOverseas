@@ -116,6 +116,8 @@ $route['admin/employee/delete/(:num)'] = 'Admin_Controller/employee_delete/$1';/
 
 $route['user/dashboard'] = 'User_Controller/dashboard';
 $route['user/appointment/add'] = 'User_Controller/new_appointment';
+$route['user/appointment/view'] = 'User_Controller/view_appointment';
+$route['user/update_password'] = 'User_Controller/update_password';
 
 $route['counsellor'] = 'Counsellor_Controller/dashboard';
 $route['counsellor/dashboard'] = 'Counsellor_Controller/dashboard';

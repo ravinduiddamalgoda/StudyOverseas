@@ -1,4 +1,4 @@
-<!--sidebar-wrapper-->
+<!-- Sidebar Wrapper -->
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div class="">
@@ -10,40 +10,52 @@
         <a href="javascript:;" class="toggle-btn ms-auto"> <i class="bx bx-menu"></i>
         </a>
     </div>
-    <!--navigation-->
+    <!-- Navigation -->
     <ul class="metismenu" id="menu">
+        <!-- Dashboard Section -->
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
-                </div>
+                <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i></div>
                 <div class="menu-title">Dashboard</div>
             </a>
-            <li>
-                <a href="<?php echo base_url('user/dashboard'); ?>" target=""><i
-                                class="bx bx-right-arrow-alt"></i>Your Dashboard</a>
-            </li>
+            <ul>
+                <li>
+                    <a href="<?php echo base_url('user/dashboard'); ?>"><i class="bx bx-right-arrow-alt"></i>Your Dashboard</a>
+                </li>
+            </ul>
         </li>
 
+        <!-- Appointments Section -->
         <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon icon-color-3"><i class="bx bx-user"></i>
-                </div>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon icon-color-3"><i class="bx bx-user"></i></div>
                 <div class="menu-title">Appointments</div>
             </a>
             <ul>
-                <?php if ($this->session->userdata('role') == 'student'): ?> <!-- Check if the user is an admin -->
+                <?php if ($this->session->userdata('role') == 'student'): ?>
                     <li>
-                        <a href="<?php echo base_url('user/appointment/add'); ?>" target=""><i
-                                class="bx bx-right-arrow-alt"></i>New Appointment</a>
+                        <a href="<?php echo base_url('user/appointment/add'); ?>"><i class="bx bx-right-arrow-alt"></i>New Appointment</a>
                     </li>
-
-                <?php else: ?>
-                    <!-- Optionally, you can add alternative menu items for non-admin users here -->
-
                 <?php endif; ?>
+                <li>
+                    <a href="<?php echo base_url('user/appointment/view'); ?>"><i class="bx bx-right-arrow-alt"></i>View Appointments</a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Account Section -->
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon icon-color-4"><i class="bx bx-lock"></i></div>
+                <div class="menu-title">Account</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="<?php echo base_url('user/update_password'); ?>"><i class="bx bx-right-arrow-alt"></i>Update Password</a>
+                </li>
             </ul>
         </li>
     </ul>
-    <!--end navigation-->
+    <!-- End Navigation -->
 </div>
-<!--end sidebar-wrapper-->
+<!-- End Sidebar Wrapper -->
