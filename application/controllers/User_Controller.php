@@ -63,8 +63,9 @@ class User_Controller extends CI_Controller
 
     // Function to view appointments
     public function view_appointments()
-    {
-        $data['appointments'] = $this->Appointment_Model->get_all_appointments();
+    {   
+
+        $data['appointments'] = $this->Appointment_Model->get_appointments_by_email();
         $this->load->view('admin/appointment_list', $data);
     }
 
@@ -77,10 +78,12 @@ class User_Controller extends CI_Controller
     }
 
     // Function to view appointment details in a modal
-    public function view_appointment($id)
+    public function view_appointment()
     {
-        $data['appointment'] = $this->Appointment_Model->get_appointment_by_id($id);
+        $id = $this->session->userdata('email');
+        $data['appointment'] = $this->Appointment_Model->get_appointments_by_email($id);
         echo json_encode($data['appointment']);
+        $this->load->view('user/view_appointment', $data);
     }
 
     // Function to edit an appointment
@@ -136,6 +139,30 @@ class User_Controller extends CI_Controller
             $this->Appointment_Model->create_appointment($data);
             $this->session->set_flashdata('success', 'Appointment created successfully');
             redirect('admin/view_appointments');
+        }
+    }
+
+
+    public function view_courses()
+    {
+        $data['courses'] = $this->Course_Model->get_all_courses();
+        $this->load->view('admin/course_list', $data);
+    }
+
+
+    public function update_password()
+    {
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[password]');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('user/update_password');
+        } else {
+            $id = $this->session->userdata('id');
+            $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+            $this->User_Model->update_password($id, $password);
+            $this->session->set_flashdata('success', 'Password updated successfully');
+            redirect('user/dashboard');
         }
     }
 

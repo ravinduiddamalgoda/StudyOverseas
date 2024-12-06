@@ -113,7 +113,8 @@ $route['admin/employees'] = "Admin_Controller/view_employees";
 
 $route['user/dashboard'] = 'User_Controller/dashboard';
 $route['user/appointment/add'] = 'User_Controller/new_appointment';
-
+$route['user/appointment/view'] = 'User_Controller/view_appointment';
+$route['user/update_password'] = 'User_Controller/update_password';
 // $route['admin/user/create'] = 'admin/user/create';
 // $route['admin/user/store'] = 'admin/user/store';
 // $route['admin/user/edit/(:num)'] = 'admin/user/edit/$1';
