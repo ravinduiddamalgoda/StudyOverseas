@@ -118,6 +118,25 @@ $route['user/dashboard'] = 'User_Controller/dashboard';
 $route['user/appointment/add'] = 'User_Controller/new_appointment';
 $route['user/appointment/view'] = 'User_Controller/view_appointment';
 $route['user/update_password'] = 'User_Controller/update_password';
+$route['user/get_councilor'] = 'User_Controller/get_councilor';
+
+$route['user/application'] = 'StudentApplication_Controller/index';
+$route['user/application/create'] = 'StudentApplication_Controller/create';
+$route['user/application/update/(:num)'] = 'StudentApplication_Controller/update/$1';
+$route['user/application/delete/(:num)'] = 'StudentApplication_Controller/delete/$1';
+
+$route['chat/send'] = 'Chat_Controller/send_message'; // POST
+$route['chat/messages/(:num)/(:num)'] = 'Chat_Controller/get_messages/$1/$2'; // GET
+$route['chat/unread/(:num)'] = 'Chat_Controller/get_unread_count/$1'; // GET
+$route['chat/messages/sender/(:num)'] = 'Chat_Controller/get_messages_by_sender/$1'; // GET
+$route['chat/messages/receiver/(:num)'] = 'Chat_Controller/get_messages_by_receiver/$1'; // GET
+
+// $route['admin/user/create'] = 'admin/user/create';
+// $route['admin/user/store'] = 'admin/user/store';
+// $route['admin/user/edit/(:num)'] = 'admin/user/edit/$1';
+// $route['admin/user/update/(:num)'] = 'admin/user/update/$1';
+// $route['admin/user/delete/(:num)'] = 'admin/user/delete/$1';
+
 
 $route['counsellor'] = 'Counsellor_Controller/dashboard';
 $route['counsellor/dashboard'] = 'Counsellor_Controller/dashboard';
@@ -125,6 +144,7 @@ $route['counsellor/chats'] = 'Counsellor_Controller/chat_list';
 
 $route['admissionteam'] = 'AdmissionTeam_Controller/dashboard';
 $route['admissionteam/dashboard'] = 'AdmissionTeam_Controller/dashboard';
+
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
