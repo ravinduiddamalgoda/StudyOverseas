@@ -42,7 +42,7 @@
                         </div>
                         <div class="ms-auto">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-primary">Add New Course</button>
+                                <a href="<?php echo base_url('admin/course/add')?>" class="btn btn-primary">Add New Course</a>
                                 <!-- <button type="button"
                                     class="btn btn-primary bg-split-primary dropdown-toggle dropdown-toggle-split"
                                     data-bs-toggle="dropdown"> <span class="visually-hidden">Toggle Dropdown</span>
@@ -85,6 +85,7 @@
                                                     <td><?php echo htmlspecialchars($course['Course_description']); ?></td>
                                                     <td><?php echo htmlspecialchars($course['Course_requirements']); ?></td>
                                                     <td><?php echo htmlspecialchars($course['University']); ?></td>
+                                                    <td><?php echo htmlspecialchars($course['Intake']); ?></td>
                                                     <td><?php echo htmlspecialchars($course['Scholarship']); ?></td>
                                                     <td><?php echo htmlspecialchars($course['English_language_requirement']); ?></td>
                                                     <td><?php echo htmlspecialchars($course['Course_fee']); ?></td>
@@ -92,18 +93,23 @@
 
                                                     <td>
                                                         <div class="input-group">
-                                                            <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                                id="actionsDropdown<?php echo htmlspecialchars($course['Course_id']); ?>"
-                                                                data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                aria-expanded="false">Actions</button>
-                                                            <div class="dropdown-menu"
-                                                                aria-labelledby="actionsDropdown<?php echo htmlspecialchars($course['Course_id']); ?>">
-                                                                <!-- Delete action using SweetAlert2 -->
-                                                                <a class="dropdown-item" href="javascript:void(0);"
-                                                                    onclick="confirmDelete(<?php echo htmlspecialchars($course['Course_id']); ?>)">Delete</a>
-                                                                <!-- <a class="dropdown-item" href="javascript:void(0);"
-                                                                    onclick="viewCourse(<?php echo htmlspecialchars($course['Course_id']); ?>)">View</a> -->
-                                                            </div>
+                                                        <button class="btn  btn-secondary dropdown-toggle" type="button"
+                                                            id="actionsDropdown<?php echo $course['Course_id']; ?>"
+                                                            data-bs-toggle="dropdown" aria-haspopup="true"
+                                                            aria-expanded="false">
+                                                            Actions
+                                                        </button>
+                                                        <div class="dropdown-menu"
+                                                            aria-labelledby="actionsDropdown<?php echo $course['Course_id']; ?>">
+                                                            <li>
+                                                                <a class="dropdown-item"
+                                                                    href="<?php echo base_url('admin/course/edit/' . $course['Course_id']); ?>">Edit</a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item"
+                                                                    href="<?php echo base_url('admin/course/delete/' . $course['Course_id']); ?>"
+                                                                    onclick="return confirm('Are you sure you want to delete this course?');">Delete</a>
+                                                            </li>
                                                         </div>
                                                     </td>
 

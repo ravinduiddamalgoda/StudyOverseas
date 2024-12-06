@@ -23,7 +23,14 @@ class Course_Model extends CI_Model
         return $query->result_array();
     }
 
-    // Delete an inquiry by ID
+    // Update an course by ID
+    public function update_course($id, $data)
+    {
+        $this->db->where('Course_id', $id);
+        $this->db->update($this->tableName, $data); // Correct table name
+    }
+
+    // Delete an course by ID
     public function delete_course($id)
     {
         $this->db->where('Course_id', $id);

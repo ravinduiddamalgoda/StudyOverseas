@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Study Overseas - Admin Login</title>
+    <title>Study Overseas - Login</title>
 
     <!-- Include Stylesheets -->
     <?php $this->load->view('inc/admin/admin_styles'); ?>
@@ -23,7 +23,7 @@
                                 <div class="card-body p-5">
                                     <div class="text-center">
                                         <img src="<?php echo base_url(); ?>assets/imgs/logo/StudyOverseasLogo.png" width="80" alt="">
-                                        <h3 class="mt-4 font-weight-bold mb-4">Welcome Admin</h3>
+                                        <h3 class="mt-4 font-weight-bold mb-4">Welcome</h3>
                                     </div>
                                     <div class="">
                                         <!-- Display messages dynamically -->

@@ -41,7 +41,7 @@
     import Notify from '<?php echo base_url(); ?>assets/admin/js/Notify.js';
     <?php if ($this->session->flashdata('success')): ?>
         let successList = `<?php echo $this->session->flashdata('success'); ?>`.split('</p>');
-        successList.pop();
+        //successList.pop();
         successList.forEach(success => {
             success = success.replace(/<[^>]*>?/gm, '').replace(/[\r\n]+/gm, '');
             Notify.success(success);

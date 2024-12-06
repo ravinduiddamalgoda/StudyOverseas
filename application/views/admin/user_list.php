@@ -107,10 +107,6 @@
                                                                     href="<?php echo base_url('admin/user/delete/' . $user['id']); ?>"
                                                                     onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
                                                             </li>
-                                                            <li>
-                                                                <a class="dropdown-item"
-                                                                    href="<?php echo base_url('admin/user/view/' . $user['id']); ?>">View</a>
-                                                            </li>
                                                         </div>
 
                                                     </div>

@@ -83,7 +83,7 @@ class Admin_Controller extends CI_Controller
         if ($this->input->post('submit')) {
             $this->form_validation->set_rules('first_name', 'First Name', 'required');
             $this->form_validation->set_rules('last_name', 'Last Name', 'required');
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
             $this->form_validation->set_rules('role', 'Role', 'required');
 
             if ($this->form_validation->run() == FALSE) {
@@ -200,7 +200,7 @@ class Admin_Controller extends CI_Controller
     public function course_create()
     {
         if ($this->input->post('submit')) {
-            $this->form_validation->set_rules('Course_id', 'Course ID', 'required');
+            $this->form_validation->set_rules('Course_id', 'Course ID', 'required|is_unique[courses.Course_id]');
             $this->form_validation->set_rules('Course_name', 'Course Name', 'required');
             $this->form_validation->set_rules('Country', 'Country', 'required');
             $this->form_validation->set_rules('Course_description', 'Course Description', 'required');
@@ -208,7 +208,7 @@ class Admin_Controller extends CI_Controller
             $this->form_validation->set_rules('University', 'University', 'required');
             $this->form_validation->set_rules('Intake', 'Intake', 'required');
             $this->form_validation->set_rules('Scholarship', 'Scholarship', 'required');
-            $this->form_validation->set_rules('English_language_requirements', 'English Language Requirements', 'required');
+            $this->form_validation->set_rules('English_language_requirement', 'English Language Requirement', 'required');
             $this->form_validation->set_rules('Course_fee', 'Course Fee', 'required');
             $this->form_validation->set_rules('Years', 'Course Duration', 'required');
             if ($this->form_validation->run() == FALSE) {
@@ -227,7 +227,7 @@ class Admin_Controller extends CI_Controller
                 'University' => $this->input->post('University'),
                 'Intake' => $this->input->post('Intake'),
                 'Scholarship' => $this->input->post('Scholarship'),
-                'English_language_requirements' => $this->input->post('English_language_requirements'),
+                'English_language_requirement' => $this->input->post('English_language_requirement'),
                 'Course_fee' => $this->input->post('Course_fee'),
                 'Years' => $this->input->post('Years'),
             );
@@ -236,15 +236,59 @@ class Admin_Controller extends CI_Controller
             $this->session->set_flashdata('success', 'Course created successfully');
             redirect('admin/courses');
         } else {
-            $this->load->view('admin/course_create');
+            $data['countries'] = $this->Country_Model->get_all_countries();
+            $this->load->view('admin/course_create', $data);  
         }
     }
 
-    public function delete_course($id)
+    public function course_edit($id){
+        if ($this->input->post('submit')) {
+            $this->form_validation->set_rules('Course_name', 'Course Name', 'required');
+            $this->form_validation->set_rules('Country', 'Country', 'required');
+            $this->form_validation->set_rules('Course_description', 'Course Description', 'required');
+            $this->form_validation->set_rules('Course_requirements', 'Course Requirements', 'required');
+            $this->form_validation->set_rules('University', 'University', 'required');
+            $this->form_validation->set_rules('Intake', 'Intake', 'required');
+            $this->form_validation->set_rules('Scholarship', 'Scholarship', 'required');
+            $this->form_validation->set_rules('English_language_requirement', 'English Language Requirement', 'required');
+            $this->form_validation->set_rules('Course_fee', 'Course Fee', 'required');
+            $this->form_validation->set_rules('Years', 'Course Duration', 'required');
+            if ($this->form_validation->run() == FALSE) {
+                $this->load->view('admin/course_create');
+                $this->session->set_flashdata('error', validation_errors());
+                $this->session->set_flashdata('form_data', $this->input->post());
+                redirect('admin/course/edit/'.$id);
+            }
+
+            $data = array(
+                'Course_id' => $id,
+                'Course_name' => $this->input->post('Course_name'),
+                'Country' => $this->input->post('Country'),
+                'Course_description' => $this->input->post('Course_description'),
+                'Course_requirements' => $this->input->post('Course_requirements'),
+                'University' => $this->input->post('University'),
+                'Intake' => $this->input->post('Intake'),
+                'Scholarship' => $this->input->post('Scholarship'),
+                'English_language_requirement' => $this->input->post('English_language_requirement'),
+                'Course_fee' => $this->input->post('Course_fee'),
+                'Years' => $this->input->post('Years'),
+            );
+
+            $this->Course_Model->update_course($id, $data);
+            $this->session->set_flashdata('success', 'Course updated successfully');
+            redirect('admin/courses');
+        } else {
+            $data['course'] = $this->Course_Model->get_course_by_id($id);
+            $data['countries'] = $this->Country_Model->get_all_countries();
+            $this->load->view('admin/course_create', $data);
+        }
+    }
+
+    public function course_delete($id)
     {
         $this->Course_Model->delete_course($id);
         $this->session->set_flashdata('success', 'Course deleted successfully');
-        redirect('admin/course_list');
+        redirect('admin/courses');
     }
 
     public function view_course($id)

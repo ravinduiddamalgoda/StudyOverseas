@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Study Overseas - Admin Login</title>
+    <title>Study Overseas - Login</title>
 
     <!-- Include Stylesheets -->
     <?php $this->load->view('inc/admin/admin_styles'); ?>

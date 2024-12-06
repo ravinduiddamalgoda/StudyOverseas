@@ -38,7 +38,7 @@
                                                 class='bx bx-home-alt'></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page"><?php
-                                    if($this->uri->segment(2) == 'add') {
+                                    if ($this->uri->segment(2) == 'add') {
                                         echo 'Add';
                                     } else {
                                         echo 'Edit';
@@ -63,114 +63,139 @@
                                         <div class="card-body">
                                             <form action="
                                             <?php
-                                            if($this->uri->segment(3) == 'edit') {
-                                                echo base_url('admin/course/edit/' . $user['id']);
+                                            if ($this->uri->segment(3) == 'edit') {
+                                                echo base_url('admin/course/edit/' . $course['Course_id']);
                                             } else {
                                                 echo base_url('admin/course/add');
-                                            }?>
+                                            } ?>
                                             " method="POST">
                                                 <div class="mb-3">
                                                     <label for="Course_id" class="form-label">Course ID</label>
                                                     <input type="text" class="form-control" id="Course_id"
                                                         name="Course_id" value="<?php
-                                                            if($this->uri->segment(3) == 'edit') {
-                                                                echo $user['first_name'];
-                                                            }?>"
-                                                            placeholder="COUNTRY-UNI-COURSECODE Ex:- SL-UOC-IT101"
-                                                     required>
+                                                        if ($this->uri->segment(3) == 'edit') {
+                                                            echo $course["Course_id"];
+                                                        } ?>" placeholder="COUNTRY-UNI-COURSECODE Ex:- SL-UOC-IT101"
+                                                        <?php
+                                                        if ($this->uri->segment(3) == 'edit') {
+                                                            echo 'readonly disabled';
+
+                                                        } ?>
+                                                        required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="Course_name" class="form-label">Course Name</label>
                                                     <input type="text" class="form-control" id="Course_name"
-                                                        name="Course_name" 
-                                                        value="<?php
-                                                            if($this->uri->segment(3) == 'edit') {
-                                                                echo $user["last_name"];
-                                                            }?>"
-                                                        required>
+                                                        name="Course_name" value="<?php
+                                                        if ($this->uri->segment(3) == 'edit') {
+                                                            echo $course["Course_name"];
+                                                        } ?>" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="Country" class="form-label">Country</label>
-                                                    <select class="form-select" id="Country" name="Country" required>
+                                                    <select class="form-select" id="Country" name="Country"
+                                                        placeholder="Select Country" required>
                                                         <option value="">Select Country</option>
-                                                        <option value="Sri Lanka" <?php
-                                                            if($this->uri->segment(3) == 'edit') {
-                                                                if($user["role"] == 'Sri Lanka') {
-                                                                    echo 'selected';
-                                                                }
-                                                            }?>>Sri Lanka</option>
-                                                        <option value="Australia" <?php
-                                                            if($this->uri->segment(3) == 'edit') {
-                                                                if($user["role"] == 'Australia') {
-                                                                    echo 'selected';
-                                                                }
-                                                            }?>>Australia</option>
+                                                        <?php
+                                                        foreach ($countries as $country) {
+                                                            ?>
+                                                            <option value="<?php echo $country['name']; ?>" <?php
+                                                               if ($this->uri->segment(3) == 'edit') {
+                                                                   if ($course["Country"] == $country['name']) {
+                                                                       echo 'selected';
+                                                                   }
+                                                               } ?>><?php echo $country['name']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="Course_description" class="form-label">Description</label>
-                                                    <textarea class="form-control" id="Course_description" name="Course_description"
-                                                        required></textarea>
+                                                    <label for="Course_description"
+                                                        class="form-label">Description</label>
+                                                    <textarea class="form-control" id="Course_description"
+                                                        name="Course_description" required><?php
+                                                    if ($this->uri->segment(3) == 'edit') {
+                                                        echo $course["Course_description"];
+                                                    } ?></textarea>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="Course_requirements" class="form-label">Course Requirements</label>
-                                                    <textarea class="form-control" id="Course_requirements" name="Course_requirements"
-                                                        required></textarea>
+                                                    <label for="Course_requirements" class="form-label">Course
+                                                        Requirements</label>
+                                                    <textarea class="form-control" id="Course_requirements"
+                                                        name="Course_requirements" required><?php
+                                                    if ($this->uri->segment(3) == 'edit') {
+                                                        echo $course["Course_requirements"];
+                                                    } ?></textarea>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="University" class="form-label">University</label>
-                                                    <select class="form-select" id="University" name="University" required>
+                                                    <select class="form-select" id="University" name="University"
+                                                        required>
                                                         <option value="">Select University</option>
-                                                        <option value="University of Colombo" <?php
-                                                            if($this->uri->segment(3) == 'edit') {
-                                                                if($user["role"] == 'University of Colombo') {
-                                                                    echo 'selected';
-                                                                }
-                                                            }?>>University of Colombo</option>
-                                                        <option value="University of Moratuwa" <?php
-                                                            if($this->uri->segment(3) == 'edit') {
-                                                                if($user["role"] == 'University of Moratuwa') {
-                                                                    echo 'selected';
-                                                                }
-                                                            }?>>University of Moratuwa</option>
+                                                        <option value="University of Dundee" <?php
+                                                        if ($this->uri->segment(3) == 'edit') {
+                                                            if ($course["University"] == 'University of Dundee') {
+                                                                echo 'selected';
+                                                            }
+                                                        } ?>>University of Dundee</option>
+                                                        <option value="University of Greenwich" <?php
+                                                        if ($this->uri->segment(3) == 'edit') {
+                                                            if ($course["University"] == 'University of Greenwich') {
+                                                                echo 'selected';
+                                                            }
+                                                        } ?>>University of Greenwich</option>
+                                                        <option value="Teesside University" <?php
+                                                        if ($this->uri->segment(3) == 'edit') {
+                                                            if ($course["University"] == 'Teesside University') {
+                                                                echo 'selected';
+                                                            }
+                                                        } ?>>Teesside University</option>
+
                                                     </select>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="Intake" class="form-label">Intake</label>
-                                                    <input type="text" class="form-control" id="Intake"
-                                                        name="Intake" 
-                                                        required>
+                                                    <input type="text" class="form-control" id="Intake" value="<?php
+                                                    if ($this->uri->segment(3) == 'edit') {
+                                                        echo $course["Intake"];
+                                                    } ?>" name="Intake" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="Scholarship" class="form-label">Scholarship</label>
-                                                    <input type="text" class="form-control" id="Scholarship"
-                                                        name="Scholarship" 
-                                                        required>
-                                                </br>
-                                                <div class="mb-3">
-                                                    <label for="English_language_requirement" class="form-label">English Language Requirement</label>
-                                                    <input type="text" class="form-control" id="English_language_requirement"
-                                                        name="English_language_requirement" 
-                                                        required>
-                                                </div>
+                                                    <input type="text" class="form-control" id="Scholarship" value="<?php
+                                                    if ($this->uri->segment(3) == 'edit') {
+                                                        echo $course["Scholarship"];
+                                                    } ?>" name="Scholarship" required>
+                                                    </br>
+                                                    <div class="mb-3">
+                                                        <label for="English_language_requirement"
+                                                            class="form-label">English Language Requirement</label>
+                                                        <input type="text" class="form-control"
+                                                            id="English_language_requirement" value="<?php
+                                                            if ($this->uri->segment(3) == 'edit') {
+                                                                echo $course["English_language_requirement"];
+                                                            } ?>" name="English_language_requirement"
+                                                            required>
+                                                    </div>
 
-                                                <div class="mb-3">
-                                                    <label for="Course_fee" class="form-label">Course Fee</label>
-                                                    <input type="text" class="form-control" id="Course_fee"
-                                                        name="Course_fee" 
-                                                        required>
-                                                </div>
+                                                    <div class="mb-3">
+                                                        <label for="Course_fee" class="form-label">Course Fee</label>
+                                                        <input type="text" class="form-control" id="Course_fee" value="<?php if ($this->uri->segment(3) == 'edit') {
+                                                            echo $course["Course_fee"];
+                                                        } ?>" name="Course_fee" required>
+                                                    </div>
 
-                                                <div class="mb-3">
-                                                    <label for="Years" class="form-label">Course Duration</label>
-                                                    <input type="text" class="form-control" id="Years"
-                                                        name="Years" 
-                                                        required>
-                                                </div>
-                                                <!-- align the button to the right -->
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                    <button type="submit" name="submit" value="submit"
-                                                        class="btn btn-primary">Submit</button>
-                                                </div>
+                                                    <div class="mb-3">
+                                                        <label for="Years" class="form-label">Course Duration</label>
+                                                        <input type="text" class="form-control" id="Years" value="<?php
+                                                        if ($this->uri->segment(3) == 'edit') {
+                                                            echo $course["Years"];
+                                                        } ?>" name="Years" required>
+                                                    </div>
+                                                    <!-- align the button to the right -->
+                                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                        <button type="submit" name="submit" value="submit"
+                                                            class="btn btn-primary">Submit</button>
+                                                    </div>
                                             </form>
                                         </div>
                                     </div>

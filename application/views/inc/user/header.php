@@ -69,7 +69,7 @@
                             </a>
 
                         <?php else: ?>
-                            <a class="dropdown-item" href="<?php echo base_url('auth/web_logout'); ?>">
+                            <a class="dropdown-item" href="<?php echo base_url('auth/logout'); ?>">
                                 <i class="bx bx-power-off"></i><span>Logout</span>
                             </a>
                         <?php endif; ?>
