@@ -117,11 +117,8 @@ $route['admin/employee/delete/(:num)'] = 'Admin_Controller/employee_delete/$1';/
 $route['user/dashboard'] = 'User_Controller/dashboard';
 $route['user/appointment/add'] = 'User_Controller/new_appointment';
 
-// $route['admin/user/create'] = 'admin/user/create';
-// $route['admin/user/store'] = 'admin/user/store';
-// $route['admin/user/edit/(:num)'] = 'admin/user/edit/$1';
-// $route['admin/user/update/(:num)'] = 'admin/user/update/$1';
-// $route['admin/user/delete/(:num)'] = 'admin/user/delete/$1';
+$route['counsellor'] = 'Counsellor_Controller/dashboard';
+$route['counsellor/dashboard'] = 'Counsellor_Controller/dashboard';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -16,9 +16,7 @@ class Auth_Controller extends CI_Controller
   public function login()
   {
     // Check if the user is already logged in
-    if ($this->session->userdata('logged_in')) {
-      redirect('admin/dashboard'); // Redirect to dashboard if logged in
-    }
+
 
     // Check for "Remember Me" cookies
     $remember_email = get_cookie('remember_email');
@@ -107,8 +105,12 @@ class Auth_Controller extends CI_Controller
         // Role-based redirection logic
         if ($user->role == 'student' || $user->role == 'customer') {
           $redirect_url = base_url('user/dashboard');  // Redirect students and customers to 'user/dashboard'
-        } else {
+        } else if ($user->role == 'admin') {
           $redirect_url = base_url('admin/dashboard'); // All others go to 'admin/dashboard'
+        } else if ($user->role == 'counsellor') {
+          $redirect_url = base_url('counsellor/dashboard'); // All others go to 'admin/dashboard'
+        } else {
+          $redirect_url = base_url('auth/login'); // Redirect to login if role is not defined
         }
 
         // Return success message with the appropriate redirect
