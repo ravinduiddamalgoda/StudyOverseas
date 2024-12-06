@@ -122,6 +122,9 @@ $route['user/update_password'] = 'User_Controller/update_password';
 $route['counsellor'] = 'Counsellor_Controller/dashboard';
 $route['counsellor/dashboard'] = 'Counsellor_Controller/dashboard';
 
+$route['admissionteam'] = 'AdmissionTeam_Controller/dashboard';
+$route['admissionteam/dashboard'] = 'AdmissionTeam_Controller/dashboard';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
