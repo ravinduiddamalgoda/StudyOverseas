@@ -125,6 +125,12 @@
                         Employee List
                     </a>
                 </li>
+                <li>
+                    <a href="<?php echo base_url('admin/employee/add'); ?>" target="">
+                        <i class="bx bx-right-arrow-alt"></i>
+                        Add Employee
+                    </a>
+                </li>
                 <?php endif?>
             </ul>
         </li>

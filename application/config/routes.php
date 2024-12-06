@@ -137,6 +137,14 @@ $route['chat/messages/receiver/(:num)'] = 'Chat_Controller/get_messages_by_recei
 // $route['admin/user/update/(:num)'] = 'admin/user/update/$1';
 // $route['admin/user/delete/(:num)'] = 'admin/user/delete/$1';
 
+
+$route['counsellor'] = 'Counsellor_Controller/dashboard';
+$route['counsellor/dashboard'] = 'Counsellor_Controller/dashboard';
+
+$route['admissionteam'] = 'AdmissionTeam_Controller/dashboard';
+$route['admissionteam/dashboard'] = 'AdmissionTeam_Controller/dashboard';
+
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
