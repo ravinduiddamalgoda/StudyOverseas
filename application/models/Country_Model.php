@@ -11,16 +11,23 @@ class Country_Model extends CI_Model
     }
 
     // Save form data to the database
-    public function save_country($data)
+    public function create_country($data)
     {
         return $this->db->insert($this->tableName, $data);
     }
 
-    // Fetch all contact inquiries from the database
+    // Update country data in the database  
+    public function update_country($data, $id)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update($this->tableName, $data);
+    }
+
+    // Fetch all countries from the database
 
     public function get_all_countries()
     {
-        $query = $this->db->get($this->tableName); // Assuming 'contact_inquiries' is the correct table name
+        $query = $this->db->get($this->tableName);
         return $query->result_array();
     }
 

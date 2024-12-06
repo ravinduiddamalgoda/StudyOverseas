@@ -103,10 +103,11 @@ $route['admin/course/add'] = 'Admin_Controller/course_create';
 $route['admin/course/edit/(:any)'] = 'Admin_Controller/course_edit/$1'; // Route to edit a course by ID
 $route['admin/course/delete/(:any)'] = 'Admin_Controller/course_delete/$1';// Route to delete a course by ID
 
-$route['admin/countries'] = "Admin_Controller/view_countries";
-$route['admin/country/(:num)'] = 'Admin_Controller/view_country/$1'; // Route to view a country by ID
-$route['admin/country/edit/(:num)'] = 'Admin_Controller/edit_country/$1'; // Route to edit a country by ID
-$route['admin/country/delete/(:num)'] = 'Admin_Controller/delete_country/$1';// Route to delete a country by ID
+$route['admin/countries'] = "Admin_Controller/country_list";
+$route['admin/country/add'] = "Admin_Controller/country_create";
+$route['admin/country/(:num)'] = 'Admin_Controller/country/$1'; // Route to view a country by ID
+$route['admin/country/edit/(:num)'] = 'Admin_Controller/country_edit/$1'; // Route to edit a country by ID
+$route['admin/country/delete/(:num)'] = 'Admin_Controller/country_delete/$1';// Route to delete a country by ID
 
 $route['admin/employees'] = "Admin_Controller/view_employees";
 

@@ -83,7 +83,7 @@ class Admin_Controller extends CI_Controller
         if ($this->input->post('submit')) {
             $this->form_validation->set_rules('first_name', 'First Name', 'required');
             $this->form_validation->set_rules('last_name', 'Last Name', 'required');
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
             $this->form_validation->set_rules('role', 'Role', 'required');
 
             if ($this->form_validation->run() == FALSE) {
@@ -291,32 +291,68 @@ class Admin_Controller extends CI_Controller
         redirect('admin/courses');
     }
 
-    public function view_course($id)
-    {
-        $data['course'] = $this->Course_Model->get_course_by_id($id);
-        echo json_encode($data['course']);
-    }
-
     /************************************ Countries ************************************/
-    public function view_countries()
+    public function country_list()
     {
         $data['countries'] = $this->Country_Model->get_all_countries();
-        $this->load->view('admin/manage_countries', $data);
+        $this->load->view('admin/country_list', $data);
     }
 
-    public function delete_country($id)
+    public function country_create(){
+        if ($this->input->post('submit')) {
+            $this->form_validation->set_rules('name', 'Country Name', 'required|is_unique[country.name]');
+            $this->form_validation->set_rules('iso_code', 'ISO Code', 'required|is_unique[country.iso_code]');
+            if ($this->form_validation->run() == FALSE) {
+                $this->load->view('admin/country_create');
+                $this->session->set_flashdata('error', validation_errors());
+                $this->session->set_flashdata('form_data', $this->input->post());
+                redirect('admin/country/add');
+            }
+
+            $data = array(
+                'name' => $this->input->post('name'),
+                'iso_code' => $this->input->post('iso_code'),
+            );
+
+            $this->Country_Model->create_country($data);
+            $this->session->set_flashdata('success', 'Country created successfully');
+            redirect('admin/countries');
+        } else {
+            $this->load->view('admin/country_create');
+        }
+    }
+
+    public function country_edit($id){
+        if ($this->input->post('submit')) {
+            $this->form_validation->set_rules('name', 'Country Name', 'required');
+            $this->form_validation->set_rules('iso_code', 'ISO Code', 'required');
+            if ($this->form_validation->run() == FALSE) {
+                $this->load->view('admin/country_create');
+                $this->session->set_flashdata('error', validation_errors());
+                $this->session->set_flashdata('form_data', $this->input->post());
+                redirect('admin/country/edit/'.$id);
+            }
+
+            $data = array(
+                'name' => $this->input->post('name'),
+                'iso_code' => $this->input->post('iso_code'),
+            );
+
+            $this->Country_Model->update_country($data, $id);
+            $this->session->set_flashdata('success', 'Country updated successfully');
+            redirect('admin/countries');
+        } else {
+            $data['country'] = $this->Country_Model->get_country_by_id($id);
+            $this->load->view('admin/country_create', $data);
+        }
+    }
+
+    public function country_delete($id)
     {
         $this->Country_Model->delete_country($id);
         $this->session->set_flashdata('success', 'Country deleted successfully');
-        redirect('admin/view_countries');
+        redirect('admin/countries');
     }
-
-    public function view_country($id)
-    {
-        $data['country'] = $this->Country_Model->get_country_by_id($id);
-        echo json_encode($data['country']);
-    }
-
 
     /************************************ Employees ************************************/
     public function view_employees()

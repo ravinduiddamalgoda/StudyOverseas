@@ -101,6 +101,12 @@
                         Country List
                     </a>
                 </li>
+                <li>
+                    <a href="<?php echo base_url('admin/country/add'); ?>" target="">
+                        <i class="bx bx-right-arrow-alt"></i>
+                        Add Countries
+                    </a>
+                </li>
                 <?php endif?>
             </ul>
         </li>

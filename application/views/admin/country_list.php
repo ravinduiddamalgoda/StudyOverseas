@@ -42,7 +42,8 @@
                         </div>
                         <div class="ms-auto">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-primary">Add New Country</button>
+                                <a href="<?php echo base_url('/admin/country/add') ?>" class="btn btn-primary">Add New
+                                    Country</a>
                                 <!-- <button type="button"
                                     class="btn btn-primary bg-split-primary dropdown-toggle dropdown-toggle-split"
                                     data-bs-toggle="dropdown"> <span class="visually-hidden">Toggle Dropdown</span>
@@ -85,12 +86,15 @@
                                                                 aria-expanded="false">Actions</button>
                                                             <div class="dropdown-menu"
                                                                 aria-labelledby="actionsDropdown<?php echo htmlspecialchars($country['id']); ?>">
-                                                                <!-- Delete action using SweetAlert2 -->
+                                                                <li>
+                                                                    <a class="dropdown-item"
+                                                                        href="<?php echo base_url('admin/country/edit/' . $country['id']); ?>">Edit</a>
+                                                                </li>
+                                                                <li>
                                                                 <a class="dropdown-item" href="javascript:void(0);"
                                                                     onclick="confirmDelete(<?php echo htmlspecialchars($country['id']); ?>)">Delete</a>
-                                                                <!-- <a class="dropdown-item" href="javascript:void(0);"
-                                                                    onclick="viewCourse(<?php echo htmlspecialchars($country['id']); ?>)">View</a> -->
-                                                            </div>
+                                                                </li>
+                                                            </l>
                                                         </div>
                                                     </td>
 
@@ -121,7 +125,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -170,7 +174,7 @@
                     dataType: 'json',
                     success: function (data) {
                         // Populate modal with data
-                        
+
 
                         // Show the modal
                         $('#viewCountryModel').modal('show');
@@ -190,7 +194,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Redirect to the delete URL or make an AJAX call to delete the data
-                        window.location.href = "<?php echo base_url('admin/delete_country/'); ?>" + id;
+                        window.location.href = "<?php echo base_url('admin/country/delete/'); ?>" + id;
                     }
                 });
             }

@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Study Overseas - Admin dashboard</title>
+    <title>Study Overseas - User List</title>
 
     <!--include Stylesheets -->
     <?php $this->load->view('inc/admin/admin_styles'); ?>
@@ -104,8 +104,8 @@
                                                             </li>
                                                             <li>
                                                                 <a class="dropdown-item"
-                                                                    href="<?php echo base_url('admin/user/delete/' . $user['id']); ?>"
-                                                                    onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                                                                    href="javascript:void(0);"
+                                                                    onclick="confirmDelete(<?php echo htmlspecialchars($user['id']); ?>)">Delete</a>
                                                             </li>
                                                         </div>
 
@@ -176,8 +176,22 @@
 
 
         <script>
-            new PerfectScrollbar('.dashboard-social-list');
-            new PerfectScrollbar('.dashboard-top-countries');
+            function confirmDelete(id) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Redirect to the delete URL or make an AJAX call to delete the data
+                        window.location.href = "<?php echo base_url('admin/user/delete/'); ?>" + id;
+                    }
+                });
+            }
         </script>
 </body>
 
