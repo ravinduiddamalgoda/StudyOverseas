@@ -16,10 +16,10 @@
     <!-- wrapper -->
     <div class="wrapper">
         <!--sidebar-wrapper-->
-        <?php $this->load->view('inc/admin/left_menu'); ?>
+        <?php $this->load->view('inc/counsellor/left_menu'); ?>
         <!--end sidebar-wrapper-->
         <!--header-->
-        <?php $this->load->view('inc/admin/header'); ?>
+        <?php $this->load->view('inc/counsellor/header'); ?>
         <!--end header-->
         <!--page-wrapper-->
         <div class="page-wrapper">
@@ -95,17 +95,6 @@
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Email</th>
-                                            <th>Role</th>
-                                            <th>Created At</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         </div>
@@ -122,7 +111,7 @@
                     class='bx bxs-up-arrow-alt'></i></a>
             <!--End Back To Top Button-->
             <!--footer -->
-            <?php $this->load->view('inc/admin/footer'); ?>
+            <?php $this->load->view('inc/counsellor/footer'); ?>
             <!-- end footer -->
         </div>
         <!-- end wrapper -->

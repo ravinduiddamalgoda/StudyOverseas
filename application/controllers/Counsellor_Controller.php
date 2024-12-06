@@ -45,7 +45,7 @@ class Counsellor_Controller extends CI_Controller
             redirect('auth/login');
         }
 
-        $data['chats'] = 'Chat list';
+        $data['chats'] = [];
         $this->load->view('counsellor/chat_list', $data);
     }
 }
