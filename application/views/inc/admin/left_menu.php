@@ -125,12 +125,6 @@
                         Employee List
                     </a>
                 </li>
-                <li>
-                    <a href="<?php echo base_url('admin/employees/attendence'); ?>" target="">
-                        <i class="bx bx-right-arrow-alt"></i>
-                        Employee Attendance
-                    </a>
-                </li>
                 <?php endif?>
             </ul>
         </li>

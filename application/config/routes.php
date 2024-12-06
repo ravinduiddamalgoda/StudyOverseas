@@ -109,8 +109,10 @@ $route['admin/country/(:num)'] = 'Admin_Controller/country/$1'; // Route to view
 $route['admin/country/edit/(:num)'] = 'Admin_Controller/country_edit/$1'; // Route to edit a country by ID
 $route['admin/country/delete/(:num)'] = 'Admin_Controller/country_delete/$1';// Route to delete a country by ID
 
-$route['admin/employees'] = "Admin_Controller/view_employees";
-
+$route['admin/employees'] = "Admin_Controller/employee_list";
+$route['admin/employee/add'] = "Admin_Controller/employee_create";
+$route['admin/employee/edit/(:num)'] = 'Admin_Controller/employee_edit/$1'; // Route to edit an employee by ID
+$route['admin/employee/delete/(:num)'] = 'Admin_Controller/employee_delete/$1';// Route to delete an employee by ID
 
 $route['user/dashboard'] = 'User_Controller/dashboard';
 $route['user/appointment/add'] = 'User_Controller/new_appointment';
