@@ -13,4 +13,21 @@ class AdmissionTeam_Controller extends CI_Controller
         $this->load->model('User_Model'); // Load the User_model
     }
 
+    public function dashboard()
+    {
+        $role = $this->session->userdata('role');
+
+        if ($role !== 'admission_team') {
+            $this->session->set_flashdata('error', 'You do not have permission to access this page');
+            redirect('auth/login');
+        }
+
+        $data['first_name'] = $this->session->userdata('first_name');
+        $data['last_name'] = $this->session->userdata('last_name');
+        $data['email'] = $this->session->userdata('email');
+        $data['role'] = $role;
+
+        $this->load->view('admission_team/dashboard', $data);
+    }
+
 }

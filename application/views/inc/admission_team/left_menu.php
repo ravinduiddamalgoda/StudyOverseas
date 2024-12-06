@@ -13,7 +13,7 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
-            <a href="<?php echo base_url('councellor/dashboard'); ?>" class="has-arrow">
+            <a href="<?php echo base_url('admissionteam/dashboard'); ?>" class="has-arrow">
                 <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
