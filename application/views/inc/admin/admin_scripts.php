@@ -40,13 +40,22 @@
 <script type="module">
     import Notify from '<?php echo base_url(); ?>assets/admin/js/Notify.js';
     <?php if ($this->session->flashdata('success')): ?>
-        //get the success message from the session, remove html tags and line breaks
-        let success = "<?php echo strip_tags(str_replace(array("\r", "\n"), '', $this->session->flashdata('success'))); ?>";
-        Notify.success(success);
+        let successList = `<?php echo $this->session->flashdata('success'); ?>`.split('</p>');
+        successList.pop();
+        successList.forEach(success => {
+            success = success.replace(/<[^>]*>?/gm, '').replace(/[\r\n]+/gm, '');
+            Notify.success(success);
+        });
+        
     <?php elseif ($this->session->flashdata('error')): ?>
-        //get the error message from the session, remove html tags and line breaks
-        let error = "<?php echo strip_tags(str_replace(array("\r", "\n"), '', $this->session->flashdata('error'))); ?>";
-        Notify.error("An error occurred");
-        Notify.error(error);
+        //get the error message list from the session by splitting the string into an array using </p> as the delimiter
+        let errorList = `<?php echo $this->session->flashdata('error'); ?>`.split('</p>');
+        //remove the last element of the array as it is an empty string
+        errorList.pop();
+        //for each error message in the array, remove html tags and line breaks
+        errorList.forEach(error => {
+            error = error.replace(/<[^>]*>?/gm, '').replace(/[\r\n]+/gm, '');
+            Notify.error(error);
+        });
     <?php endif; ?>
 </script>

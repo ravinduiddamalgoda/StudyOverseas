@@ -46,8 +46,8 @@ class Admin_Controller extends CI_Controller
     }
 
     public function user_create()
-    { 
-        if($this->input->post('submit')) {
+    {
+        if ($this->input->post('submit')) {
             $this->form_validation->set_rules('first_name', 'First Name', 'required');
             $this->form_validation->set_rules('last_name', 'Last Name', 'required');
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
@@ -73,14 +73,14 @@ class Admin_Controller extends CI_Controller
             $this->User_Model->create_user($data);
             $this->session->set_flashdata('success', 'User created successfully');
             redirect('admin/users');
-        }else{
+        } else {
             $this->load->view('admin/user_create');
         }
     }
 
     public function user_edit($id)
     {
-        if($this->input->post('submit')) {
+        if ($this->input->post('submit')) {
             $this->form_validation->set_rules('first_name', 'First Name', 'required');
             $this->form_validation->set_rules('last_name', 'Last Name', 'required');
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
@@ -89,7 +89,7 @@ class Admin_Controller extends CI_Controller
             if ($this->form_validation->run() == FALSE) {
                 $this->session->set_flashdata('error', validation_errors());
                 $this->session->set_flashdata('form_data', $this->input->post());
-                redirect('admin/user/edit/'.$id);
+                redirect('admin/user/edit/' . $id);
             }
 
             $data = array(
@@ -102,7 +102,7 @@ class Admin_Controller extends CI_Controller
             $this->User_Model->update_user($id, $data);
             $this->session->set_flashdata('success', 'User updated successfully');
             redirect('admin/users');
-        }else{
+        } else {
             $data['user'] = $this->User_Model->get_user_by_id($id);
             $this->load->view('admin/user_create', $data);
         }
@@ -158,7 +158,7 @@ class Admin_Controller extends CI_Controller
             'appointment_time' => $this->input->post('appointment_time'),
             'other_info' => $this->input->post('other_info'),
         );
-    
+
         $this->Appointment_Model->update_appointment($id, $data);
         $this->session->set_flashdata('success', 'Appointment updated successfully');
         redirect('admin/view_appointments');
@@ -197,13 +197,20 @@ class Admin_Controller extends CI_Controller
         $this->load->view('admin/course_list', $data);
     }
 
-    public function course_create(){
-        if($this->input->post('submit')) {
-            $this->form_validation->set_rules('name', 'Name', 'required');
-            $this->form_validation->set_rules('description', 'Description', 'required');
-            $this->form_validation->set_rules('duration', 'Duration', 'required');
-            $this->form_validation->set_rules('fee', 'Fee', 'required');
-
+    public function course_create()
+    {
+        if ($this->input->post('submit')) {
+            $this->form_validation->set_rules('Course_id', 'Course ID', 'required');
+            $this->form_validation->set_rules('Course_name', 'Course Name', 'required');
+            $this->form_validation->set_rules('Country', 'Country', 'required');
+            $this->form_validation->set_rules('Course_description', 'Course Description', 'required');
+            $this->form_validation->set_rules('Course_requirements', 'Course Requirements', 'required');
+            $this->form_validation->set_rules('University', 'University', 'required');
+            $this->form_validation->set_rules('Intake', 'Intake', 'required');
+            $this->form_validation->set_rules('Scholarship', 'Scholarship', 'required');
+            $this->form_validation->set_rules('English_language_requirements', 'English Language Requirements', 'required');
+            $this->form_validation->set_rules('Course_fee', 'Course Fee', 'required');
+            $this->form_validation->set_rules('Years', 'Course Duration', 'required');
             if ($this->form_validation->run() == FALSE) {
                 $this->load->view('admin/course_create');
                 $this->session->set_flashdata('error', validation_errors());
@@ -212,17 +219,23 @@ class Admin_Controller extends CI_Controller
             }
 
             $data = array(
-                'name' => $this->input->post('name'),
-                'description' => $this->input->post('description'),
-                'duration' => $this->input->post('duration'),
-                'fee' => $this->input->post('fee'),
-                'created_at' => date('Y-m-d H:i:s')
+                'Course_id' => $this->input->post('Course_id'),
+                'Course_name' => $this->input->post('Course_name'),
+                'Country' => $this->input->post('Country'),
+                'Course_description' => $this->input->post('Course_description'),
+                'Course_requirements' => $this->input->post('Course_requirements'),
+                'University' => $this->input->post('University'),
+                'Intake' => $this->input->post('Intake'),
+                'Scholarship' => $this->input->post('Scholarship'),
+                'English_language_requirements' => $this->input->post('English_language_requirements'),
+                'Course_fee' => $this->input->post('Course_fee'),
+                'Years' => $this->input->post('Years'),
             );
 
             $this->Course_Model->create_course($data);
             $this->session->set_flashdata('success', 'Course created successfully');
             redirect('admin/courses');
-        }else{
+        } else {
             $this->load->view('admin/course_create');
         }
     }

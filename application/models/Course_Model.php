@@ -11,7 +11,7 @@ class Course_Model extends CI_Model
     }
 
     // Save form data to the database
-    public function save_course($data)
+    public function create_course($data)
     {
         return $this->db->insert($this->tableName, $data);
     }

@@ -49,7 +49,7 @@
                             List</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('admin/inqueries'); ?>" target=""><i
+                        <a href="<?php echo base_url('admin/inquiries'); ?>" target=""><i
                                 class="bx bx-right-arrow-alt"></i>Inquiry List</a>
                     </li>
 
