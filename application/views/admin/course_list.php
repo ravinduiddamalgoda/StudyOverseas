@@ -107,8 +107,8 @@
                                                             </li>
                                                             <li>
                                                                 <a class="dropdown-item"
-                                                                    href="<?php echo base_url('admin/course/delete/' . $course['Course_id']); ?>"
-                                                                    onclick="return confirm('Are you sure you want to delete this course?');">Delete</a>
+                                                                    href="javascript:void(0);"
+                                                                    onclick="confirmDelete('<?php echo htmlspecialchars($course['Course_id']); ?>')">Delete</a>
                                                             </li>
                                                         </div>
                                                     </td>
@@ -209,7 +209,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Redirect to the delete URL or make an AJAX call to delete the data
-                        window.location.href = "<?php echo base_url('admin/delete_course/'); ?>" + id;
+                        window.location.href = "<?php echo base_url('admin/course/delete/'); ?>" + id;
                     }
                 });
             }

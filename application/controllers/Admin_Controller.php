@@ -83,7 +83,7 @@ class Admin_Controller extends CI_Controller
         if ($this->input->post('submit')) {
             $this->form_validation->set_rules('first_name', 'First Name', 'required');
             $this->form_validation->set_rules('last_name', 'Last Name', 'required');
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
             $this->form_validation->set_rules('role', 'Role', 'required');
 
             if ($this->form_validation->run() == FALSE) {
@@ -291,50 +291,141 @@ class Admin_Controller extends CI_Controller
         redirect('admin/courses');
     }
 
-    public function view_course($id)
-    {
-        $data['course'] = $this->Course_Model->get_course_by_id($id);
-        echo json_encode($data['course']);
-    }
-
     /************************************ Countries ************************************/
-    public function view_countries()
+    public function country_list()
     {
         $data['countries'] = $this->Country_Model->get_all_countries();
-        $this->load->view('admin/manage_countries', $data);
+        $this->load->view('admin/country_list', $data);
     }
 
-    public function delete_country($id)
+    public function country_create(){
+        if ($this->input->post('submit')) {
+            $this->form_validation->set_rules('name', 'Country Name', 'required|is_unique[country.name]');
+            $this->form_validation->set_rules('iso_code', 'ISO Code', 'required|is_unique[country.iso_code]');
+            if ($this->form_validation->run() == FALSE) {
+                $this->load->view('admin/country_create');
+                $this->session->set_flashdata('error', validation_errors());
+                $this->session->set_flashdata('form_data', $this->input->post());
+                redirect('admin/country/add');
+            }
+
+            $data = array(
+                'name' => $this->input->post('name'),
+                'iso_code' => $this->input->post('iso_code'),
+            );
+
+            $this->Country_Model->create_country($data);
+            $this->session->set_flashdata('success', 'Country created successfully');
+            redirect('admin/countries');
+        } else {
+            $this->load->view('admin/country_create');
+        }
+    }
+
+    public function country_edit($id){
+        if ($this->input->post('submit')) {
+            $this->form_validation->set_rules('name', 'Country Name', 'required');
+            $this->form_validation->set_rules('iso_code', 'ISO Code', 'required');
+            if ($this->form_validation->run() == FALSE) {
+                $this->load->view('admin/country_create');
+                $this->session->set_flashdata('error', validation_errors());
+                $this->session->set_flashdata('form_data', $this->input->post());
+                redirect('admin/country/edit/'.$id);
+            }
+
+            $data = array(
+                'name' => $this->input->post('name'),
+                'iso_code' => $this->input->post('iso_code'),
+            );
+
+            $this->Country_Model->update_country($data, $id);
+            $this->session->set_flashdata('success', 'Country updated successfully');
+            redirect('admin/countries');
+        } else {
+            $data['country'] = $this->Country_Model->get_country_by_id($id);
+            $this->load->view('admin/country_create', $data);
+        }
+    }
+
+    public function country_delete($id)
     {
         $this->Country_Model->delete_country($id);
         $this->session->set_flashdata('success', 'Country deleted successfully');
-        redirect('admin/view_countries');
+        redirect('admin/countries');
     }
-
-    public function view_country($id)
-    {
-        $data['country'] = $this->Country_Model->get_country_by_id($id);
-        echo json_encode($data['country']);
-    }
-
 
     /************************************ Employees ************************************/
-    public function view_employees()
+    public function employee_list()
     {
-        $data['employees'] = $this->Employee_Model->get_all_employees();
-        $this->load->view('admin/manage_employees', $data);
+        $data['users'] = $this->User_Model->get_all_employees();
+        $this->load->view('admin/employee_list', $data);
     }
 
-    public function delete_employee($id)
+    public function employee_create(){
+        if ($this->input->post('submit')) {
+            $this->form_validation->set_rules('first_name', 'First Name', 'required');
+            $this->form_validation->set_rules('last_name', 'Last Name', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
+            $this->form_validation->set_rules('password', 'Password', 'required');
+            $this->form_validation->set_rules('role', 'Role', 'required');
+
+            if ($this->form_validation->run() == FALSE) {
+                $this->load->view('admin/employee_create');
+                $this->session->set_flashdata('error', validation_errors());
+                $this->session->set_flashdata('form_data', $this->input->post());
+                redirect('admin/employee/add');
+            }
+
+            $data = array(
+                'first_name' => $this->input->post('first_name'),
+                'last_name' => $this->input->post('last_name'),
+                'email' => $this->input->post('email'),
+                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'role' => $this->input->post('role'),
+                'created_at' => date('Y-m-d H:i:s')
+            );
+
+            $this->User_Model->create_user($data);
+            $this->session->set_flashdata('success', 'Employee created successfully');
+            redirect('admin/employees');
+        } else {
+            $this->load->view('admin/employee_create');
+        }
+    }
+
+    public function employee_edit($id){
+        if ($this->input->post('submit')) {
+            $this->form_validation->set_rules('first_name', 'First Name', 'required');
+            $this->form_validation->set_rules('last_name', 'Last Name', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+            $this->form_validation->set_rules('role', 'Role', 'required');
+
+            if ($this->form_validation->run() == FALSE) {
+                $this->session->set_flashdata('error', validation_errors());
+                $this->session->set_flashdata('form_data', $this->input->post());
+                redirect('admin/employee/edit/' . $id);
+            }
+
+            $data = array(
+                'first_name' => $this->input->post('first_name'),
+                'last_name' => $this->input->post('last_name'),
+                'email' => $this->input->post('email'),
+                'role' => $this->input->post('role'),
+            );
+
+            $this->User_Model->update_user($id, $data);
+            $this->session->set_flashdata('success', 'Employee updated successfully');
+            redirect('admin/employees');
+        } else {
+            $data['user'] = $this->User_Model->get_user_by_id($id);
+            $this->load->view('admin/employee_create', $data);
+        }
+    }
+
+    public function employee_delete($id)
     {
-        $this->Employee_Model->delete_employee($id);
+        $this->User_Model->delete_user($id);
         $this->session->set_flashdata('success', 'Employee deleted successfully');
-        redirect('admin/view_employees');
-    }
-
-    public function view_employee($id)
-    {
-        $data['employee'] = $this->Employee_Model->get_employee_by_id($id);
-        echo json_encode($data['employee']);
+        redirect('admin/employees');
     }
 }

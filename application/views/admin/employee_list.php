@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Study Overseas - User List</title>
+    <title>Study Overseas - Employee List</title>
 
     <!--include Stylesheets -->
     <?php $this->load->view('inc/admin/admin_styles'); ?>
@@ -28,20 +28,20 @@
                 <div class="page-content">
                     <!--breadcrumb-->
                     <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-                        <div class="breadcrumb-title pe-3">Users</div>
+                        <div class="breadcrumb-title pe-3">Employees</div>
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
                                     <li class="breadcrumb-item"><a href="javascript:;"><i
                                                 class='bx bx-home-alt'></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">User List</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Employee List</li>
                                 </ol>
                             </nav>
                         </div>
                         <div class="ms-auto">
                             <div class="btn-group">
-                                <a type="button" class="btn btn-primary" href = <?php echo base_url('admin/user/add')?>>Add New Member</a>
+                                <a type="button" class="btn btn-primary" href = <?php echo base_url('admin/employee/add')?>>Add New Member</a>
                                 <!-- <button type="button"
                                     class="btn btn-primary bg-split-primary dropdown-toggle dropdown-toggle-split"
                                     data-bs-toggle="dropdown"> <span class="visually-hidden">Toggle Dropdown</span>
@@ -62,7 +62,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h4 class="mb-0">User List</h4>
+                                <h4 class="mb-0">Employee List</h4>
                             </div>
                             <hr />
                             <div class="table-responsive">
@@ -100,7 +100,7 @@
                                                             aria-labelledby="actionsDropdown<?php echo $user['id']; ?>">
                                                             <li>
                                                                 <a class="dropdown-item"
-                                                                    href="<?php echo base_url('admin/user/edit/' . $user['id']); ?>">Edit</a>
+                                                                    href="<?php echo base_url('admin/employee/edit/' . $user['id']); ?>">Edit</a>
                                                             </li>
                                                             <li>
                                                                 <a class="dropdown-item"
@@ -188,7 +188,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Redirect to the delete URL or make an AJAX call to delete the data
-                        window.location.href = "<?php echo base_url('admin/user/delete/'); ?>" + id;
+                        window.location.href = "<?php echo base_url('admin/employee/delete/'); ?>" + id;
                     }
                 });
             }

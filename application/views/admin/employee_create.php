@@ -39,11 +39,11 @@
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page"><?php
                                     if($this->uri->segment(2) == 'add') {
-                                        echo 'Create';
+                                        echo 'Add';
                                     } else {
                                         echo 'Edit';
                                     }
-                                    ?> User</li>
+                                    ?> Employee</li>
                                 </ol>
                             </nav>
                         </div>
@@ -58,15 +58,15 @@
                                 <div class="col-md-8">
                                     <div class="card shadow">
                                         <div class="card-header bg-primary text-white">
-                                            <h3 class="card-title">User Details</h3>
+                                            <h3 class="card-title">Employee Details</h3>
                                         </div>
                                         <div class="card-body">
                                             <form action="
                                             <?php
                                             if($this->uri->segment(3) == 'edit') {
-                                                echo base_url('admin/user/edit/' . $user['id']);
+                                                echo base_url('admin/employee/edit/' . $user['id']);
                                             } else {
-                                                echo base_url('admin/user/add');
+                                                echo base_url('admin/employee/add');
                                             }?>
                                             " method="POST">
                                                 <div class="mb-3">
@@ -111,18 +111,6 @@
                                                     <label for="role" class="form-label">Role</label>
                                                     <select class="form-select" id="role" name="role" required>
                                                         <option value="">Select Role</option>
-                                                        <option value="admin" <?php
-                                                            if($this->uri->segment(3) == 'edit') {
-                                                                if($user["role"] == 'admin') {
-                                                                    echo 'selected';
-                                                                }
-                                                            }?>>Admin</option>
-                                                        <option value="student" <?php
-                                                            if($this->uri->segment(3) == 'edit') {
-                                                                if($user["role"] == 'student') {
-                                                                    echo 'selected';
-                                                                }
-                                                            }?>>Student</option>
                                                         <option value="counsellor" <?php
                                                             if($this->uri->segment(3) == 'edit') {
                                                                 if($user["role"] == 'counsellor') {

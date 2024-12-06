@@ -14,6 +14,13 @@ class User_Model extends CI_Model {
         return $query->result_array(); // Return the result as an array
     }
 
+    // Fetch all users except students
+    public function get_all_employees() {
+        $this->db->where('role !=', 'student'); // Get all users except students
+        $query = $this->db->get('users'); // Get all users from the 'users' table
+        return $query->result_array(); // Return the result as an array
+    }
+
     public function create_user($data) {
         $this->db->insert('users', $data); // Insert the data into the 'users' table
     }
