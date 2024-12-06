@@ -25,6 +25,7 @@
 <script src="<?php echo base_url(); ?>assets/admin/plugins/vectormap/jquery-jvectormap-au-mill.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/index.js"></script>
+
 <!-- App JS -->
 <script src="<?php echo base_url(); ?>assets/admin/js/app.js"></script>
 <script>
@@ -34,3 +35,18 @@
 
 <!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Notify JS -->
+<script type="module">
+    import Notify from '<?php echo base_url(); ?>assets/admin/js/Notify.js';
+    <?php if ($this->session->flashdata('success')): ?>
+        //get the success message from the session, remove html tags and line breaks
+        let success = "<?php echo strip_tags(str_replace(array("\r", "\n"), '', $this->session->flashdata('success'))); ?>";
+        Notify.success(success);
+    <?php elseif ($this->session->flashdata('error')): ?>
+        //get the error message from the session, remove html tags and line breaks
+        let error = "<?php echo strip_tags(str_replace(array("\r", "\n"), '', $this->session->flashdata('error'))); ?>";
+        Notify.error("An error occurred");
+        Notify.error(error);
+    <?php endif; ?>
+</script>

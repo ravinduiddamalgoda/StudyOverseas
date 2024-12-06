@@ -57,7 +57,8 @@ class Admin_Controller extends CI_Controller
             if ($this->form_validation->run() == FALSE) {
                 $this->load->view('admin/user_create');
                 $this->session->set_flashdata('error', validation_errors());
-                return;
+                $this->session->set_flashdata('form_data', $this->input->post());
+                redirect('admin/user/add');
             }
 
             $data = array(
@@ -75,6 +76,43 @@ class Admin_Controller extends CI_Controller
         }else{
             $this->load->view('admin/user_create');
         }
+    }
+
+    public function user_edit($id)
+    {
+        if($this->input->post('submit')) {
+            $this->form_validation->set_rules('first_name', 'First Name', 'required');
+            $this->form_validation->set_rules('last_name', 'Last Name', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+            $this->form_validation->set_rules('role', 'Role', 'required');
+
+            if ($this->form_validation->run() == FALSE) {
+                $this->session->set_flashdata('error', validation_errors());
+                $this->session->set_flashdata('form_data', $this->input->post());
+                redirect('admin/user/edit/'.$id);
+            }
+
+            $data = array(
+                'first_name' => $this->input->post('first_name'),
+                'last_name' => $this->input->post('last_name'),
+                'email' => $this->input->post('email'),
+                'role' => $this->input->post('role'),
+            );
+
+            $this->User_Model->update_user($id, $data);
+            $this->session->set_flashdata('success', 'User updated successfully');
+            redirect('admin/users');
+        }else{
+            $data['user'] = $this->User_Model->get_user_by_id($id);
+            $this->load->view('admin/user_create', $data);
+        }
+    }
+
+    public function user_delete($id)
+    {
+        $this->User_Model->delete_user($id);
+        $this->session->set_flashdata('success', 'User deleted successfully');
+        redirect('admin/users');
     }
 
     // Function to view appointments
@@ -153,17 +191,47 @@ class Admin_Controller extends CI_Controller
      * Summary of view_courses
      * @return void
      */
-    public function view_courses()
+    public function course_list()
     {
         $data['courses'] = $this->Course_Model->get_all_courses();
-        $this->load->view('admin/manage_courses', $data);
+        $this->load->view('admin/course_list', $data);
+    }
+
+    public function course_create(){
+        if($this->input->post('submit')) {
+            $this->form_validation->set_rules('name', 'Name', 'required');
+            $this->form_validation->set_rules('description', 'Description', 'required');
+            $this->form_validation->set_rules('duration', 'Duration', 'required');
+            $this->form_validation->set_rules('fee', 'Fee', 'required');
+
+            if ($this->form_validation->run() == FALSE) {
+                $this->load->view('admin/course_create');
+                $this->session->set_flashdata('error', validation_errors());
+                $this->session->set_flashdata('form_data', $this->input->post());
+                redirect('admin/course/add');
+            }
+
+            $data = array(
+                'name' => $this->input->post('name'),
+                'description' => $this->input->post('description'),
+                'duration' => $this->input->post('duration'),
+                'fee' => $this->input->post('fee'),
+                'created_at' => date('Y-m-d H:i:s')
+            );
+
+            $this->Course_Model->create_course($data);
+            $this->session->set_flashdata('success', 'Course created successfully');
+            redirect('admin/courses');
+        }else{
+            $this->load->view('admin/course_create');
+        }
     }
 
     public function delete_course($id)
     {
         $this->Course_Model->delete_course($id);
         $this->session->set_flashdata('success', 'Course deleted successfully');
-        redirect('admin/view_courses');
+        redirect('admin/course_list');
     }
 
     public function view_course($id)

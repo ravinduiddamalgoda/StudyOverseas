@@ -36,3 +36,7 @@
 
 <!-- custom.css file -->
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/css/style.css" />
+
+<!-- Notify CSS -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/css/theme.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/css/notify.css" rel="stylesheet" type="text/css"/>

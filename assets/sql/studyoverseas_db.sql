@@ -150,7 +150,7 @@ INSERT INTO `country` (`id`, `name`, `iso_code`) VALUES
 --
 
 CREATE TABLE `courses` (
-  `Course_id` varchar(4) NOT NULL,
+  `Course_id` varchar(20) NOT NULL,
   `Course_name` varchar(700) NOT NULL,
   `Country` varchar(45) NOT NULL,
   `Course_description` varchar(1000) NOT NULL,
@@ -431,7 +431,7 @@ CREATE TABLE `student_academic_qualification` (
 
 CREATE TABLE `student_application` (
   `Appl_id` varchar(4) NOT NULL,
-  `Course_id` varchar(4) NOT NULL,
+  `Course_id` varchar(20) NOT NULL,
   `Rs_id` varchar(4) NOT NULL,
   `Emp_id` varchar(4) NOT NULL,
   `Job_id` varchar(4) NOT NULL,

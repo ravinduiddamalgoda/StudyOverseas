@@ -4,4 +4,5 @@ RewriteBase /StudyOverseas/
 # Redirect to index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/assets/
 RewriteRule ^(.*)$ index.php/$1 [L]

@@ -100,16 +100,16 @@
                                                             aria-labelledby="actionsDropdown<?php echo $user['id']; ?>">
                                                             <li>
                                                                 <a class="dropdown-item"
-                                                                    href="<?php echo base_url('user/edit/' . $user['id']); ?>">Edit</a>
+                                                                    href="<?php echo base_url('admin/user/edit/' . $user['id']); ?>">Edit</a>
                                                             </li>
                                                             <li>
                                                                 <a class="dropdown-item"
-                                                                    href="<?php echo base_url('user/delete/' . $user['id']); ?>"
+                                                                    href="<?php echo base_url('admin/user/delete/' . $user['id']); ?>"
                                                                     onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
                                                             </li>
                                                             <li>
                                                                 <a class="dropdown-item"
-                                                                    href="<?php echo base_url('user/view/' . $user['id']); ?>">View</a>
+                                                                    href="<?php echo base_url('admin/user/view/' . $user['id']); ?>">View</a>
                                                             </li>
                                                         </div>
 

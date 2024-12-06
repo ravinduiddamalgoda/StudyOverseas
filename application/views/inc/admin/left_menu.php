@@ -13,7 +13,7 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
-            <a href="javascript:;" class="has-arrow">
+            <a href="<?php echo base_url('admin/dashboard'); ?>" class="has-arrow">
                 <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
@@ -75,6 +75,12 @@
                     <a href="<?php echo base_url('admin/courses'); ?>" target="">
                         <i class="bx bx-right-arrow-alt"></i>
                         Course List
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('admin/course/add'); ?>" target="">
+                        <i class="bx bx-right-arrow-alt"></i>
+                        Add Course
                     </a>
                 </li>
                 <?php endif?>

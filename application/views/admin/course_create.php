@@ -39,11 +39,11 @@
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page"><?php
                                     if($this->uri->segment(2) == 'add') {
-                                        echo 'Create';
+                                        echo 'Add';
                                     } else {
                                         echo 'Edit';
                                     }
-                                    ?> User</li>
+                                    ?> Course</li>
                                 </ol>
                             </nav>
                         </div>
@@ -58,30 +58,31 @@
                                 <div class="col-md-8">
                                     <div class="card shadow">
                                         <div class="card-header bg-primary text-white">
-                                            <h3 class="card-title">User Details</h3>
+                                            <h3 class="card-title">Course Details</h3>
                                         </div>
                                         <div class="card-body">
                                             <form action="
                                             <?php
                                             if($this->uri->segment(3) == 'edit') {
-                                                echo base_url('admin/user/edit/' . $user['id']);
+                                                echo base_url('admin/course/edit/' . $user['id']);
                                             } else {
-                                                echo base_url('admin/user/add');
+                                                echo base_url('admin/course/add');
                                             }?>
                                             " method="POST">
                                                 <div class="mb-3">
-                                                    <label for="first_name" class="form-label">First Name</label>
-                                                    <input type="text" class="form-control" id="first_name"
-                                                        name="first_name" value="<?php
+                                                    <label for="Course_id" class="form-label">Course ID</label>
+                                                    <input type="text" class="form-control" id="Course_id"
+                                                        name="Course_id" value="<?php
                                                             if($this->uri->segment(3) == 'edit') {
                                                                 echo $user['first_name'];
                                                             }?>"
+                                                            placeholder="COUNTRY-UNI-COURSECODE Ex:- SL-UOC-IT101"
                                                      required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="last_name" class="form-label">Last Name</label>
-                                                    <input type="text" class="form-control" id="last_name"
-                                                        name="last_name" 
+                                                    <label for="Course_name" class="form-label">Course Name</label>
+                                                    <input type="text" class="form-control" id="Course_name"
+                                                        name="Course_name" 
                                                         value="<?php
                                                             if($this->uri->segment(3) == 'edit') {
                                                                 echo $user["last_name"];
@@ -89,43 +90,82 @@
                                                         required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="email" class="form-label">Email</label>
-                                                    <input type="email" class="form-control" id="email" name="email"
-                                                        value="<?php
+                                                    <label for="Country" class="form-label">Country</label>
+                                                    <select class="form-select" id="Country" name="Country" required>
+                                                        <option value="">Select Country</option>
+                                                        <option value="Sri Lanka" <?php
                                                             if($this->uri->segment(3) == 'edit') {
-                                                                echo $user["email"];
-                                                            }?>"
-                                                        required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="password" class="form-label">Password</label>
-                                                    <input type="password" class="form-control" id="password"
-                                                        name="password"
-                                                        <?php
-                                                            if($this->uri->segment(3) == 'edit') {
-                                                                echo "disabled";
-                                                            }?>                                                       
-                                                        required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="role" class="form-label">Role</label>
-                                                    <select class="form-select" id="role" name="role" required>
-                                                        <option value="">Select Role</option>
-                                                        <option value="admin" <?php
-                                                            if($this->uri->segment(3) == 'edit') {
-                                                                if($user["role"] == 'admin') {
+                                                                if($user["role"] == 'Sri Lanka') {
                                                                     echo 'selected';
                                                                 }
-                                                            }?>>Admin</option>
-                                                        <option value="student" <?php
+                                                            }?>>Sri Lanka</option>
+                                                        <option value="Australia" <?php
                                                             if($this->uri->segment(3) == 'edit') {
-                                                                if($user["role"] == 'student') {
+                                                                if($user["role"] == 'Australia') {
                                                                     echo 'selected';
                                                                 }
-                                                            }?>>Student</option>
+                                                            }?>>Australia</option>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="Course_description" class="form-label">Description</label>
+                                                    <textarea class="form-control" id="Course_description" name="Course_description"
+                                                        required></textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="Course_requirements" class="form-label">Course Requirements</label>
+                                                    <textarea class="form-control" id="Course_requirements" name="Course_requirements"
+                                                        required></textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="University" class="form-label">University</label>
+                                                    <select class="form-select" id="University" name="University" required>
+                                                        <option value="">Select University</option>
+                                                        <option value="University of Colombo" <?php
+                                                            if($this->uri->segment(3) == 'edit') {
+                                                                if($user["role"] == 'University of Colombo') {
+                                                                    echo 'selected';
+                                                                }
+                                                            }?>>University of Colombo</option>
+                                                        <option value="University of Moratuwa" <?php
+                                                            if($this->uri->segment(3) == 'edit') {
+                                                                if($user["role"] == 'University of Moratuwa') {
+                                                                    echo 'selected';
+                                                                }
+                                                            }?>>University of Moratuwa</option>
                                                     </select>
                                                 </div>
+                                                <div class="mb-3">
+                                                    <label for="Intake" class="form-label">Intake</label>
+                                                    <input type="text" class="form-control" id="Intake"
+                                                        name="Intake" 
+                                                        required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="Scholarship" class="form-label">Scholarship</label>
+                                                    <input type="text" class="form-control" id="Scholarship"
+                                                        name="Scholarship" 
+                                                        required>
                                                 </br>
+                                                <div class="mb-3">
+                                                    <label for="English_language_requirement" class="form-label">English Language Requirement</label>
+                                                    <input type="text" class="form-control" id="English_language_requirement"
+                                                        name="English_language_requirement" 
+                                                        required>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="Course_fee" class="form-label">Course Fee</label>
+                                                    <input type="text" class="form-control" id="Course_fee"
+                                                        name="Course_fee" 
+                                                        required>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="Years" class="form-label">Course Duration</label>
+                                                    <input type="text" class="form-control" id="Years"
+                                                        name="Years" 
+                                                        required>
+                                                </div>
                                                 <!-- align the button to the right -->
                                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                                     <button type="submit" name="submit" value="submit"

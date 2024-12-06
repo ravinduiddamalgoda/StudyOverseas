@@ -84,6 +84,9 @@ $route['admin/dashboard'] = 'Admin_Controller/dashboard';
 
 $route['admin/users'] = 'Admin_Controller/user_list';
 $route['admin/user/add'] = 'Admin_Controller/user_create';
+$route['admin/user/edit/(:num)'] = 'Admin_Controller/user_edit/$1';
+$route['admin/user/update/(:num)'] = 'Admin_Controller/user_update/$1';
+$route['admin/user/delete/(:num)'] = 'Admin_Controller/user_delete/$1';
 
 $route['admin/appointments'] = 'Admin_Controller/view_appointments';
 $route['admin/appointment/(:num)'] = 'Admin_Controller/view_appointment/$1';
@@ -95,10 +98,10 @@ $route['admin/inquiries'] = 'Admin_Controller/view_inquiries';
 $route['admin/inquiry/(:num)'] = 'Admin_Controller/view_inquiry/$1'; // Route to view an inquiry by ID
 $route['admin/inquiry/delete/(:num)'] = 'Admin_Controller/delete_inquiry/$1';// Route to delete an inquiry by ID
 
-$route['admin/courses'] = 'Admin_Controller/view_courses';
-$route['admin/course/(:num)'] = 'Admin_Controller/view_course/$1'; // Route to view a course by ID
-$route['admin/course/edit/(:num)'] = 'Admin_Controller/edit_course/$1'; // Route to edit a course by ID
-$route['admin/course/delete/(:num)'] = 'Admin_Controller/delete_course/$1';// Route to delete a course by ID
+$route['admin/courses'] = 'Admin_Controller/course_list';
+$route['admin/course/add'] = 'Admin_Controller/course_create';
+$route['admin/course/edit/(:num)'] = 'Admin_Controller/course_edit/$1'; // Route to edit a course by ID
+$route['admin/course/delete/(:num)'] = 'Admin_Controller/course_delete/$1';// Route to delete a course by ID
 
 $route['admin/countries'] = "Admin_Controller/view_countries";
 $route['admin/country/(:num)'] = 'Admin_Controller/view_country/$1'; // Route to view a country by ID
