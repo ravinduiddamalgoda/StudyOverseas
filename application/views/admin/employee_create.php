@@ -116,7 +116,7 @@
                                                                 if($user["role"] == 'counsellor') {
                                                                     echo 'selected';
                                                                 }
-                                                            }?>>Councellor</option>
+                                                            }?>>Counsellor</option>
                                                         <option value="admission_team" <?php
                                                             if($this->uri->segment(3) == 'edit') {
                                                                 if($user["role"] == 'admission_team') {

@@ -68,28 +68,27 @@
                                 <table id="example2" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
                                             <th>Student Name</th>
                                             <th>Started At</th>
+                                            <th>Last Message At</th>
                                             <th>Last Message</th>
+                                            <th>Unread Count</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php foreach ($chats as $chat): ?>
                                             <tr>
-                                                <td><?php echo $chat['id']; ?></td>
-                                                <td><?php echo $chat['student_name']; ?></td>
-                                                <td><?php echo date('d M Y H:i:s', strtotime($chat['created_at'])); ?></td>
-                                                <td><?php echo $chat['last_message']; ?></td>
+                                                <td><?php echo $chat->student_name ?></td>
+                                                <td><?php echo $chat->first_message_time ?></td>
+                                                <td><?php echo $chat->last_message_time ?></td>
+                                                <td class="<?php echo $chat->last_message_by == 'you' ? 'cell--green' : 'cell--yellow'?>"><?php echo $chat->last_message ?><sub>(<?php echo $chat->last_message_by?>)</sub></sub></td>
+                                                <td><?php echo $chat->unread_count ?></td>
                                                 <td>
                                                     <div class="input-group">
-                                                        <button class="btn  btn-secondary dropdown-toggle" type="button"
-                                                            id="actionsDropdown<?php echo $chat['id']; ?>"
-                                                            data-bs-toggle="dropdown" aria-haspopup="true"
-                                                            aria-expanded="false">
-                                                            Chat
-                                                        </button>
+                                                        <a class="btn  btn-secondary" href="<?php echo base_url('/counsellor/chat/').$chat->chat_id?>">
+                                                            View Chat
+                                                        </a>
                                                     </div>
                                                 </td>
                                             </tr>

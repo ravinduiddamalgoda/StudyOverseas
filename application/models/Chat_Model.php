@@ -72,4 +72,14 @@ class Chat_Model extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function get_all_messages_of($id)
+    {
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $this->db->where('sender_id', $id);
+        $this->db->or_where('receiver_id', $id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }

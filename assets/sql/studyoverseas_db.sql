@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2024 at 05:06 PM
+-- Generation Time: Dec 06, 2024 at 10:02 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.1.31
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,10 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `appointment`
 --
-
 CREATE DATABASE IF NOT EXISTS `studyoverseas_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-
-USE studyoverseas_db;
+USE `studyoverseas_db`;
 
 CREATE TABLE `appointment` (
   `Appointment_id` varchar(4) NOT NULL,
@@ -72,6 +70,21 @@ INSERT INTO `appointments` (`id`, `name`, `email`, `phone`, `interested_program`
 (1, 'kasun', 'kasunniluminda@gmail.com', '111111', 'gh', 'gh', 'gh', '2024-10-29', '11:00 AM - 12:00 PM', 'ghg', '2024-10-09 17:50:21'),
 (2, 'fd', 'kasunniluminda@gmail.com', 'sds', 'sdd', 'sds', 'sds', '2024-10-31', '11:00 AM - 12:00 PM', '', '2024-10-09 18:06:15'),
 (3, 'kasun', 'kasunniluminda@gmail.com', '11111', 'fdfdf', 'dsdsd', 'sdsdsd', '2024-10-12', '09:00 AM - 10:00 AM', 'sdsds', '2024-10-11 01:04:14');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chat_messages`
+--
+
+CREATE TABLE `chat_messages` (
+  `message_id` int(11) NOT NULL,
+  `sender_id` int(11) NOT NULL,
+  `receiver_id` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `sent_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `is_read` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -426,17 +439,17 @@ CREATE TABLE `student_academic_qualification` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `student_application`
+-- Table structure for table `student_applications`
 --
 
-CREATE TABLE `student_application` (
-  `Appl_id` varchar(4) NOT NULL,
-  `Course_id` varchar(20) NOT NULL,
-  `Rs_id` varchar(4) NOT NULL,
-  `Emp_id` varchar(4) NOT NULL,
-  `Job_id` varchar(4) NOT NULL,
-  `Appl_name` varchar(7000) NOT NULL,
-  `Appl_status` tinyint(4) NOT NULL
+CREATE TABLE `student_applications` (
+  `application_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `course_id` varchar(20) NOT NULL,
+  `application_status` enum('pending','approved','rejected') DEFAULT 'pending',
+  `application_details` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -498,7 +511,8 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `role
 (4, 'Sadeepa', 'Malshan', 'sadeepa@gmail.com', '$2y$10$AhbQNiSqNAuO0es3wpth6OYDS3kAEwpMzA8TEmBpgj2f3Nr499Emm', 'student', '2024-10-04 01:05:14', NULL, NULL),
 (5, 'Nuwan', 'Dammika', 'nuwan@gmail.com', '$2y$10$0G6THmN3iWapy/Nw6hQ5l.X2/GN26USdvxiuDLLQDyA/2xnERW2Za', 'student', '2024-10-04 01:26:10', NULL, NULL),
 (6, 'chalani', 'shehara', 'chalani@gmail.com', '$2y$10$7GW0cXqgg7eLFctpx3RwLeu7MyT.2X0vKN.o.jt0g/3MrUFrpQ96C', 'student', '2024-10-06 16:29:00', NULL, NULL),
-(7, 'sandaya', 'kumari', 'sandaya@gmail.com', '$2y$10$dERvWOM1HO37ojfHPkivhuGr8B2zlkZf.a3/2Oq3M7lk0onw2/pk2', 'student', '2024-10-06 16:41:34', NULL, NULL);
+(7, 'sandaya', 'kumari', 'sandaya@gmail.com', '$2y$10$dERvWOM1HO37ojfHPkivhuGr8B2zlkZf.a3/2Oq3M7lk0onw2/pk2', 'student', '2024-10-06 16:41:34', NULL, NULL),
+(8, 'Ravindu', 'Iddamalgoda', 'ravinduiddamalgoda55@gmail.com', '$2y$10$dj1JtOcy31t5kZ.FrKKTWelR9sl/QTIKrJUsoMia1HEyQHM2m5HUu', 'student', '2024-12-06 06:49:05', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -547,6 +561,14 @@ ALTER TABLE `appointment`
 --
 ALTER TABLE `appointments`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `chat_messages`
+--
+ALTER TABLE `chat_messages`
+  ADD PRIMARY KEY (`message_id`),
+  ADD KEY `sender_id` (`sender_id`),
+  ADD KEY `receiver_id` (`receiver_id`);
 
 --
 -- Indexes for table `contact_inquiries`
@@ -694,14 +716,12 @@ ALTER TABLE `student_academic_qualification`
   ADD KEY `Rs_id_idx` (`Rs_id`);
 
 --
--- Indexes for table `student_application`
+-- Indexes for table `student_applications`
 --
-ALTER TABLE `student_application`
-  ADD PRIMARY KEY (`Appl_id`),
-  ADD KEY `Course_id_idx` (`Course_id`),
-  ADD KEY `Rs_id_idx` (`Rs_id`),
-  ADD KEY `Emp_id_idx` (`Emp_id`),
-  ADD KEY `Job_id_idx` (`Job_id`);
+ALTER TABLE `student_applications`
+  ADD PRIMARY KEY (`application_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `course_id` (`course_id`);
 
 --
 -- Indexes for table `student_documents`
@@ -751,6 +771,12 @@ ALTER TABLE `appointments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `chat_messages`
+--
+ALTER TABLE `chat_messages`
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `contact_inquiries`
 --
 ALTER TABLE `contact_inquiries`
@@ -763,10 +789,16 @@ ALTER TABLE `country`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `student_applications`
+--
+ALTER TABLE `student_applications`
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -778,6 +810,13 @@ ALTER TABLE `users`
 ALTER TABLE `appointment`
   ADD CONSTRAINT `fk_appointment_customer_id` FOREIGN KEY (`Customer_id`) REFERENCES `prospective_customer` (`Customer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_appointment_emp_id` FOREIGN KEY (`Emp_id`) REFERENCES `employees` (`Emp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `chat_messages`
+--
+ALTER TABLE `chat_messages`
+  ADD CONSTRAINT `chat_messages_ibfk_1` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `chat_messages_ibfk_2` FOREIGN KEY (`receiver_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `dashboard`
@@ -881,13 +920,11 @@ ALTER TABLE `student_academic_qualification`
   ADD CONSTRAINT `fk_saqualification_rs_id` FOREIGN KEY (`Rs_id`) REFERENCES `registered_students` (`Rs_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `student_application`
+-- Constraints for table `student_applications`
 --
-ALTER TABLE `student_application`
-  ADD CONSTRAINT `fk_application_course_id` FOREIGN KEY (`Course_id`) REFERENCES `courses` (`Course_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_application_emp_id` FOREIGN KEY (`Emp_id`) REFERENCES `employees` (`Emp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_application_job_id` FOREIGN KEY (`Job_id`) REFERENCES `job_department` (`Job_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_application_rs_id` FOREIGN KEY (`Rs_id`) REFERENCES `registered_students` (`Rs_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `student_applications`
+  ADD CONSTRAINT `student_applications_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `student_applications_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `courses` (`Course_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `student_documents`

@@ -141,6 +141,7 @@ $route['chat/messages/receiver/(:num)'] = 'Chat_Controller/get_messages_by_recei
 $route['counsellor'] = 'Counsellor_Controller/dashboard';
 $route['counsellor/dashboard'] = 'Counsellor_Controller/dashboard';
 $route['counsellor/chats'] = 'Counsellor_Controller/chat_list';
+$route['counsellor/chat/(:num)'] = 'Counsellor_Controller/chat/$1';
 
 $route['admissionteam'] = 'AdmissionTeam_Controller/dashboard';
 $route['admissionteam/dashboard'] = 'AdmissionTeam_Controller/dashboard';

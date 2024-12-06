@@ -14,11 +14,16 @@ class Chat_Controller extends CI_Controller
     {
         $data = json_decode(file_get_contents('php://input'), true);
 
+        if($data === null) {
+            $data = $this->input->post();
+        }
+
         if (isset($data['sender_id'], $data['receiver_id'], $data['message'])) {
             $message_data = [
                 'sender_id' => $data['sender_id'],
                 'receiver_id' => $data['receiver_id'],
-                'message' => $data['message']
+                'message' => $data['message'],
+                'is_read' => 0
             ];
             $this->Chat_Model->send_message($message_data);
 
@@ -32,7 +37,7 @@ class Chat_Controller extends CI_Controller
     public function get_messages($sender_id, $receiver_id)
     {
         $messages = $this->Chat_Model->get_messages($sender_id, $receiver_id);
-        $this->Chat_Model->mark_as_read($sender_id, $receiver_id); // Mark as read
+        $this->Chat_Model->mark_as_read($receiver_id, $sender_id); // Mark as read
         echo json_encode(['status' => 'success', 'messages' => $messages]);
     }
 

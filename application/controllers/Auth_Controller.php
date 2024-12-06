@@ -116,7 +116,7 @@ class Auth_Controller extends CI_Controller
         }
 
         // Return success message with the appropriate redirect
-        echo json_encode(['status' => 'success', 'redirect' => $redirect_url]);
+        echo json_encode(['status' => 'success', 'redirect' => $redirect_url, 'user' => $user_data]);
         // echo json_encode(['status' => 'success', 'redirect' => base_url('admin/dashboard')]);
 
       } else {
