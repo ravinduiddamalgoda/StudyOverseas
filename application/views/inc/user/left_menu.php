@@ -54,6 +54,10 @@
                 <li>
                     <a href="<?php echo base_url('user/application/create'); ?>"><i class="bx bx-right-arrow-alt"></i>New Application</a>
                 </li>
+                <li>
+                    <a href="<?php echo base_url('user/calculate_funds'); ?>"><i class="bx bx-right-arrow-alt"></i>Calculate Funds</a>
+                </li>
+
             </ul>
         </li>
 
