@@ -111,6 +111,8 @@ class Auth_Controller extends CI_Controller
           $redirect_url = base_url('counsellor/dashboard'); // All others go to 'admin/dashboard'
         } else if ($user->role == 'admission_team') {
           $redirect_url = base_url('admissionteam/dashboard'); // All others go to 'admin/dashboard'
+        } else if ($user->role == 'it') {
+          $redirect_url = base_url('it/dashboard'); // All others go to 'admin/dashboard'
         } else {
           $redirect_url = base_url('auth/login'); // Redirect to login if role is not defined
         }

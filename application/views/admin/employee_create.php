@@ -123,6 +123,12 @@
                                                                     echo 'selected';
                                                                 }
                                                             }?>>Admission Team</option>
+                                                        <option value="it" <?php
+                                                            if($this->uri->segment(3) == 'edit') {
+                                                                if($user["role"] == 'it') {
+                                                                    echo 'selected';
+                                                                }
+                                                            }?>>IT Team</option>
                                                         <option value="admin" <?php
                                                             if($this->uri->segment(3) == 'edit') {
                                                                 if($user["role"] == 'admin') {

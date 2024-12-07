@@ -73,6 +73,7 @@ $route['auth/login_process'] = 'Auth_Controller/login_process';
 $route['auth/register'] = 'Auth_Controller/register';
 $route['auth/register_process'] = 'Auth_Controller/register_process';
 $route['auth/logout'] = 'Auth_Controller/logout';
+$route['auth/web_logout'] = 'Auth_Controller/logout';
 $route['auth/forgot_password'] = 'Auth_Controller/forgot_password';
 $route['auth/send_otp'] = 'Auth_Controller/send_otp';
 $route['auth/verify_otp'] = 'Auth_Controller/verify_otp';
@@ -146,6 +147,20 @@ $route['counsellor/chat/(:num)'] = 'Counsellor_Controller/chat/$1';
 $route['admissionteam'] = 'AdmissionTeam_Controller/dashboard';
 $route['admissionteam/dashboard'] = 'AdmissionTeam_Controller/dashboard';
 
+$route['it'] = 'IT_Controller/dashboard';
+$route['it/dashboard'] = 'IT_Controller/dashboard';
+
+$route['it/courses'] = 'IT_Controller/course_list';
+$route['it/course/add'] = 'IT_Controller/course_create';
+$route['it/course/edit/(:any)'] = 'IT_Controller/course_edit/$1';
+$route['it/course/update/(:any)'] = 'IT_Controller/course_update/$1';
+$route['it/course/delete/(:any)'] = 'IT_Controller/course_delete/$1';
+
+$route['it/countries'] = 'IT_Controller/country_list';
+$route['it/country/add'] = 'IT_Controller/country_create';
+$route['it/country/edit/(:num)'] = 'IT_Controller/country_edit/$1';
+$route['it/country/update/(:num)'] = 'IT_Controller/country_update/$1';
+$route['it/country/delete/(:num)'] = 'IT_Controller/country_delete/$1';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
