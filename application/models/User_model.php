@@ -44,9 +44,15 @@ class User_Model extends CI_Model {
         $this->db->update('users', ['password' => $password]);
     }
 
-    public function get_councilor() {
-        $this->db->where('role', 'councilor');
+    public function get_counsellor() {
+        $this->db->where('role', 'counsellor');
         $query = $this->db->get('users');
         return $query->result_array();
+    }
+
+    public function get_user_by_email_json($email) {
+        $this->db->where('email', $email);
+        $query = $this->db->get('users');
+        return $query->row_array();
     }
 }
