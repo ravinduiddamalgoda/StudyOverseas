@@ -30,7 +30,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h4 class="mb-0">Chat with</h4>
+                                <h4 class="mb-0">Chat with <?php echo $student_name?></h4>
                             </div>
                             <hr />
                             <div class="table-responsive">

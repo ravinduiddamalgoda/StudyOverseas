@@ -109,6 +109,8 @@ class Counsellor_Controller extends CI_Controller
         $this->Chat_Model->mark_as_read($student_id, $id);
 
         $data['student_id'] = $student_id;
+        $stu_data = $this->User_Model->get_user_by_id($student_id);
+        $data['student_name'] = $stu_data['first_name'] . ' ' . $stu_data['last_name'];
         $this->load->view('counsellor/chat', $data);
     }
 }
