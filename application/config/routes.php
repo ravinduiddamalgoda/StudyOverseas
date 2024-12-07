@@ -119,7 +119,7 @@ $route['user/dashboard'] = 'User_Controller/dashboard';
 $route['user/appointment/add'] = 'User_Controller/new_appointment';
 $route['user/appointment/view'] = 'User_Controller/view_appointment';
 $route['user/update_password'] = 'User_Controller/update_password';
-$route['user/get_councilor'] = 'User_Controller/get_councilor';
+$route['user/get_counsellor'] = 'User_Controller/get_counsellor';
 
 $route['user/application'] = 'StudentApplication_Controller/index';
 $route['user/application/create'] = 'StudentApplication_Controller/create';
@@ -137,6 +137,13 @@ $route['chat/messages/receiver/(:num)'] = 'Chat_Controller/get_messages_by_recei
 // $route['admin/user/edit/(:num)'] = 'admin/user/edit/$1';
 // $route['admin/user/update/(:num)'] = 'admin/user/update/$1';
 // $route['admin/user/delete/(:num)'] = 'admin/user/delete/$1';
+
+
+$route['student/documents/upload'] = 'StudentDocuments_Controller/upload_document'; // POST
+$route['student/documents/(:num)'] = 'StudentDocuments_Controller/get_documents/$1'; // GET
+$route['student/documents/delete/(:num)'] = 'StudentDocuments_Controller/delete_document/$1'; // DELETE
+$route['student/documents/names/(:num)'] = 'StudentDocuments_Controller/get_document_names/$1'; // GET
+$route['user/calculate_funds'] = 'User_Controller/calculate_funds';
 
 
 $route['counsellor'] = 'Counsellor_Controller/dashboard';
@@ -161,6 +168,7 @@ $route['it/country/add'] = 'IT_Controller/country_create';
 $route['it/country/edit/(:num)'] = 'IT_Controller/country_edit/$1';
 $route['it/country/update/(:num)'] = 'IT_Controller/country_update/$1';
 $route['it/country/delete/(:num)'] = 'IT_Controller/country_delete/$1';
+
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
