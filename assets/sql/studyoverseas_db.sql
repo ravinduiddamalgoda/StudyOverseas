@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2024 at 10:02 PM
+-- Generation Time: Dec 07, 2024 at 05:37 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `appointment`
 --
+
 CREATE DATABASE IF NOT EXISTS `studyoverseas_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `studyoverseas_db`;
 
@@ -413,7 +414,7 @@ CREATE TABLE `salary` (
 
 CREATE TABLE `show_fund` (
   `Sfund_id` varchar(4) NOT NULL,
-  `Course_id` varchar(4) NOT NULL,
+  `Course_id` varchar(20) NOT NULL,
   `Rs_id` varchar(4) NOT NULL,
   `Traveling_expenses` varchar(45) NOT NULL,
   `Living_expenses` varchar(45) NOT NULL,
@@ -459,11 +460,11 @@ CREATE TABLE `student_applications` (
 --
 
 CREATE TABLE `student_documents` (
-  `Studdoc_id` varchar(4) NOT NULL,
-  `Emp_id` varchar(4) NOT NULL,
-  `Rs_id` varchar(4) NOT NULL,
-  `Doc_name` varchar(5000) NOT NULL,
-  `Doc_status` tinyint(4) NOT NULL
+  `document_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `document_name` varchar(255) NOT NULL,
+  `document_path` varchar(255) NOT NULL,
+  `uploaded_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -727,9 +728,8 @@ ALTER TABLE `student_applications`
 -- Indexes for table `student_documents`
 --
 ALTER TABLE `student_documents`
-  ADD PRIMARY KEY (`Studdoc_id`),
-  ADD KEY `Emp_id_idx` (`Emp_id`),
-  ADD KEY `Rs_id_idx` (`Rs_id`);
+  ADD PRIMARY KEY (`document_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `student_work_experiences`
@@ -793,6 +793,12 @@ ALTER TABLE `country`
 --
 ALTER TABLE `student_applications`
   MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `student_documents`
+--
+ALTER TABLE `student_documents`
+  MODIFY `document_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -930,8 +936,7 @@ ALTER TABLE `student_applications`
 -- Constraints for table `student_documents`
 --
 ALTER TABLE `student_documents`
-  ADD CONSTRAINT `fk_documents_emp_id` FOREIGN KEY (`Emp_id`) REFERENCES `employees` (`Emp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_documents_rs_id` FOREIGN KEY (`Rs_id`) REFERENCES `registered_students` (`Rs_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `student_documents_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `student_work_experiences`

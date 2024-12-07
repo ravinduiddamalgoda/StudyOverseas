@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Study Overseas - User List</title>
+    <title>Study Overseas - User Chat</title>
 
     <!--include Stylesheets -->
     <?php $this->load->view('inc/admin/admin_styles'); ?>

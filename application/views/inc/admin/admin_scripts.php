@@ -36,6 +36,9 @@
 <!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- Davidshimjs QR Code -->
+<script src="<?php echo base_url(); ?>assets/admin/js/qrcode.min.js"></script>
+
 <!-- Notify JS -->
 <script type="module">
     import Notify from '<?php echo base_url(); ?>assets/admin/js/Notify.js';

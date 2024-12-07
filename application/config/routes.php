@@ -169,6 +169,9 @@ $route['it/country/edit/(:num)'] = 'IT_Controller/country_edit/$1';
 $route['it/country/update/(:num)'] = 'IT_Controller/country_update/$1';
 $route['it/country/delete/(:num)'] = 'IT_Controller/country_delete/$1';
 
+$route['it/attendance/qr'] = 'IT_Controller/attendance_qr';
+$route['user/attendance/(:any)'] = 'User_Controller/mark_attendance/$1';
+
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

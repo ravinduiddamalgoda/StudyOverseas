@@ -200,4 +200,11 @@ class IT_Controller extends CI_Controller
         redirect('it/countries');
     }
 
+    public function attendance_qr()
+    {
+        $secure_rand = bin2hex(random_bytes(32));
+        $data['secure_rand'] = $secure_rand;
+        $this->load->view('it/attendance_qr', $data);
+    }
+
 }

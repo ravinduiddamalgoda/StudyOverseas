@@ -67,6 +67,24 @@
                 <?php endif ?>
             </ul>
         </li>
+
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon icon-color-3"><i class="bx bxs-user-badge"></i>
+                </div>
+                <div class="menu-title">Employee Management</div>
+            </a>
+            <ul>
+                <?php if ($this->session->userdata('role') == 'it'): ?> <!-- Check if the user is an admin -->
+                    <li>
+                        <a href="<?php echo base_url('it/attendance/qr'); ?>" target="">
+                            <i class="bx bx-right-arrow-alt"></i>
+                            Attendance QR
+                        </a>
+                    </li>
+                <?php endif ?>
+            </ul>
+        </li>
     </ul>
     <!--end navigation-->
 </div>
