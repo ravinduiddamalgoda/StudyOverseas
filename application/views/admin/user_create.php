@@ -123,12 +123,7 @@
                                                                     echo 'selected';
                                                                 }
                                                             }?>>Student</option>
-                                                        <option value="counsellor" <?php
-                                                            if($this->uri->segment(3) == 'edit') {
-                                                                if($user["role"] == 'counsellor') {
-                                                                    echo 'selected';
-                                                                }
-                                                            }?>>Councellor</option>
+                                                        
                                                     </select>
                                                 </div>
                                                 </br>
